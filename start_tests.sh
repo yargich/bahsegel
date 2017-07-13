@@ -10,7 +10,7 @@ echo -e '\n#### Create Virtual Environment ####\n'
 virtualenv -p /usr/bin/python2.7 --no-site-packages ~/.gamingtec_env
 
 
-VIRTUAL_ENV_NAME='.gamingtec_env'
+VIRTUAL_ENV_NAME='.gamingtec_env
 
 virtualenv $VIRTUAL_ENV_NAME
 
@@ -25,9 +25,9 @@ pip install -r requirements.txt
 
 echo -e '#### Run tests ####\n'
 
-#python start_test.py
+python start.py
 
-nosetests --with-html --html-report=nose_report_test.html
+#nosetests --with-html --html-report=nose_report_test.html
 
 echo ### deactivate virtual environment ###
 deactivate
