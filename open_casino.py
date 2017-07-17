@@ -35,13 +35,13 @@ class Actions():
 class TestWebpage(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.driver.get('https://tst.bahsegel.info/')
+        self.driver.get('https://tst.bahsege.info/')
 
     def test_login(self):
         login_button = Actions.login()
-        users_login = Actions.fill_userslogin(self, 'qwerty')
-        user_passsword = Actions.fill_userpassword(self, 'xyi')
-        subbmit = Actions.submitbutton(self)
+        users_login = Actions.fill_userslogin('qwerty')
+        user_passsword = Actions.fill_userpassword('xyi')
+        subbmit = Actions.submitbutton()
 
 
 if __name__ == '__main__':
