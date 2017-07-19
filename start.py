@@ -35,11 +35,7 @@ class Bahsegel:
         class_name = 'prematch_staks_left'
         driver.find_elements_by_class_name(class_name)[0].click()
         driver.maximize_window()
-
-
-
-
-
+        # driver.find_element_by_id('betAmountInput').send_keys('2')
 
 test = Bahsegel()
 test.left_menu()
