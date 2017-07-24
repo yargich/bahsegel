@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 echo -e '#### Run tests ####\n'
 
-python start.py
+#python start.py
 
 nosetests start_bahsegel.py --with-html
 python -m webbrowser nosetests.html
