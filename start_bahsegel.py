@@ -140,3 +140,6 @@ class Bahsegel(unittest.TestCase):
         self.driver.session_id
 
         self.driver.close()
+
+if __name__ == '__main__':
+    unittest.main()
