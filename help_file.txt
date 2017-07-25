@@ -1,0 +1,290 @@
+anna.matviienko [4:07 PM]
+Check-list for Trbet:
+https://jira.gamingtec.com/browse/TRB-585
+Can be used for all other sites that have sportsbook (Bettilt, Bahsegel, Lebull).
+
+
+anna.matviienko [4:16 PM]
+Authentication required:
+beta5
+gamma8
+
+
+oleksii.havrylov [4:27 PM]
+спасибо
+
+
+anna.matviienko [4:29 PM]
+пожалуйста
+
+
+
+----- July 12th -----
+anna.matviienko [12:14 PM]
+test
+
+
+oleksii.havrylov [12:15 PM]
+https://wiki.gamingtec.com/index.php/Gamingtec#
+
+
+[12:19]
+https://drive.google.com/drive/folders/0B6RDFsZpiaGlRElodHNPRXQzWUk
+
+
+
+----- July 13th -----
+anna.matviienko [3:48 PM]
+"@tst.Desktop.trbet": {
+   "domain": "https://tst.trbet.com",
+   "login": "qa_user26",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-15",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+
+
+[3:48]
+"@devs.Desktop.trbet": {
+   "domain": "http://devs.trbet.com",
+   "login": "qa_user26",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-15",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+
+
+[3:49]
+"@stg.Desktop.trbet": {
+   "domain": "https://stg.trbet.com",
+   "login": "tbsaparkar",
+   "password": "q1q1q1",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-17",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+
+
+[3:49]
+"@www.Desktop.trbet": {
+   "domain": "https://www.trbet55.com",
+   "login": "tbsaparkar",
+   "password": "q1q1q1",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-17",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+
+
+[3:49]
+"@tst.Mobile.trbet": {
+   "domain": "https://tst-m.trbet.com",
+   "login": "qa_user26",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-15",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+
+
+[3:49]
+"@stg.Mobile.trbet": {
+   "domain": "https://stg-m.trbet.com",
+   "login": "tbsaparkar",
+   "password": "q1q1q1",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-17",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+
+
+[3:50]
+"@tst.Desktop.bettilt": {
+   "domain": "https://tst.bettilt.com",
+   "login": "btsaparkar",
+   "password": "q1q1q1",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-17",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+
+
+[3:50]
+"@stg.Desktop.bettilt": {
+   "domain": "https://stg.bettilt.com",
+   "login": "btsaparkar",
+   "password": "q1q1q1",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-17",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+
+
+[3:50]
+"@www.Desktop.bettilt": {
+   "domain": "https://www.bettilt2.com",
+   "login": "btsaparkar",
+   "password": "q1q1q1",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-17",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+bettilt2.com
+Bem-vindo à Bettilt - casino online e apostas desportivas
+Bettilt é o local onde poderas jogar casino online ou apostas desportivas
+
+
+[3:50]
+"@tst.Mobile.bettilt": {
+   "domain": "https://tst-m.bettilt.com",
+   "login": "btsaparkar",
+   "password": "q1q1q1",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-07",
+   "playHistoryDate": "2017-03-17",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2016-10-01",
+   "endBettingPeriod": "2017-04-07"
+
+
+[3:50]
+"@tst.Desktop.casibon": {
+   "domain": "https://tst.casibon.com",
+   "login": "testuser1",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-04-21",
+   "playHistoryDate": "2017-05-22",
+   "playHistoryTime": "All"
+
+
+oleksii.havrylov [3:50 PM]
+thank you verry much
+
+
+anna.matviienko [3:50 PM]
+"@stg.Desktop.casibon": {
+   "domain": "https://stg.casibon.com",
+   "login": "testuser1",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-05-25",
+   "playHistoryDate": "2017-05-23",
+   "playHistoryTime": "All"
+ },
+ "@www.Desktop.casibon": {
+   "domain": "https://www.casibon7.com",
+   "login": "testuser1",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-05-22",
+   "playHistoryDate": "2017-05-23",
+   "playHistoryTime": "All"
+ },
+ "@tst.Mobile.casibon": {
+   "domain": "https://tst-m.casibon.com",
+   "login": "testuser1",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-05-22",
+   "playHistoryDate": "2017-05-23",
+   "playHistoryTime": "All"
+ },
+
+
+[3:51]
+"@tst.Desktop.casinowin": {
+   "domain": "https://tst.casinowin.com",
+   "login": "casino_win1",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-05-22",
+   "playHistoryDate": "2017-05-23",
+   "playHistoryTime": "All"
+ },
+ "@stg.Desktop.casinowin": {
+   "domain": "https://stg.casinowin.com",
+   "login": "casino_win1",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-05-22",
+   "playHistoryDate": "2017-05-23",
+   "playHistoryTime": "All"
+ },
+ "@www.Desktop.casinowin": {
+   "domain": "https://www.casinowin.com",
+   "login": "casino_win1",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-05-22",
+   "playHistoryDate": "2017-05-23",
+   "playHistoryTime": "All"
+ },
+ "@tst.Mobile.casinowin": {
+   "domain": "https://tst-m.casinowin.com",
+   "login": "casino_win1",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-02-01",
+   "endPaymentPeriod": "2017-05-22",
+   "playHistoryDate": "2017-05-23",
+   "playHistoryTime": "All"
+casinowin.com
+Welcome to CasinoWin.
+Some description
+
+
+[3:51]
+"@tst.Desktop.bahsegel": {
+ "domain": "https://tst.bahsegel.info",
+ "login": "bahsegel_26",
+ "password": "qwerty26",
+ "startPaymentPeriod": "2017-05-31",
+ "endPaymentPeriod": "2017-06-15",
+ "playHistoryDate": "2017-05-31",
+ "playHistoryTime": "All",
+ "startBettingPeriod": "2017-05-31",
+ "endBettingPeriod": "2017-06-15"
+},
+ "@stg.Desktop.bahsegel": {
+   "domain": "https://stg.bahsegel.info",
+   "login": "bahsegel_26",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-05-31",
+   "endPaymentPeriod": "2017-06-15",
+   "playHistoryDate": "2017-05-31",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2017-05-31",
+   "endBettingPeriod": "2017-06-15"
+ },
+ "@www.Desktop.bahsegel": {
+   "domain": "https://yeni.bahsegel95.com",
+   "login": "bahsegel_26",
+   "password": "qwerty26",
+   "startPaymentPeriod": "2017-05-31",
+   "endPaymentPeriod": "2017-06-15",
+   "playHistoryDate": "2017-05-31",
+   "playHistoryTime": "All",
+   "startBettingPeriod": "2017-05-31",
+   "endBettingPeriod": "2017-06-15"
+ }
+}
