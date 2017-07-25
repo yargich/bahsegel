@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Test Report</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<style>
+body {
+    font-family: Calibri, "Trebuchet MS", sans-serif;
+}
+* {
+    word-break: break-all;
+}
+table, td, th, .dataid {
+    border: 1px solid #aaa;
+    border-collapse: collapse;
+    background: #fff;
+}
+section {
+    background: rgba(0, 0, 0, 0.05);
+    margin: 2ex;
+    padding: 1ex;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+h1 {
+    font-size: 130%;
+}
+h2 {
+    font-size: 120%;
+}
+h3 {
+    font-size: 100%;
+}
+h4 {
+    font-size: 85%;
+}
+h1, h2, h3, h4, a[href] {
+    cursor: pointer;
+    color: #0074d9;
+    text-decoration: none;
+}
+h3 strong, a.failed {
+    color: #ff4136;
+}
+.failed {
+    color: #ff4136;
+}
+a.success {
+    color: #3d9970;
+}
+pre {
+    font-family: 'Consolas', 'Deja Vu Sans Mono',
+                 'Bitstream Vera Sans Mono', 'Monaco',
+                 'Courier New', monospace;
+}
+
+.test-details,
+.traceback {
+    display: none;
+}
+section:target .test-details {
+    display: block;
+}
+
+</style>
+</head>
+<body>
+    <h1>Overview</h1>
+    <section>
+        <table>
+            <tr>
+                <th>Class</th>
+                <th>Fail</th>
+                <th class="failed">Error</th>
+                <th>Skip</th>
+                <th>Success</th>
+                <th>Total</th>
+            </tr>
+                <tr>
+                    <td>start_bahsegel.Bahsegel</td>
+                    <td>0</td>
+                    <td class="failed">2</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>3</td>
+                </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td>0</td>
+                <td class="failed">2</td>
+                <td>0</td>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+        </table>
+    </section>
+    <h1>Failure details</h1>
+            <section>
+                <h2>start_bahsegel.Bahsegel (0 failures, 2 errors)</h2>
+                <div>
+                        <section id="start_bahsegel.Bahsegel:test_open_result_page">
+                            <h3>test_open_result_page: <strong>builtins.TypeError</strong></h3>
+                            <div class="test-details">
+                                <h4>Traceback</h4>
+                                <pre class="traceback">Traceback (most recent call last):
+  File "c:\users\oleksii\appdata\local\programs\python\python36\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+  File "c:\users\oleksii\appdata\local\programs\python\python36\lib\unittest\case.py", line 601, in run
+    testMethod()
+  File "C:\Users\oleksii\PycharmProjects\qa_gamingtec\start_bahsegel.py", line 52, in test_open_result_page
+    test.open_result_in_browser()
+TypeError: open_result_in_browser() missing 1 required positional argument: 'file'
+-------------------- >> begin captured logging << --------------------
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63240/session {"capabilities": {"firstMatch": [], "alwaysMatch": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63240/session/f3c26da9978673e7aca1acb4ca0d8afb/window/current/size {"width": 1800, "height": 1800, "windowHandle": "current", "sessionId": "f3c26da9978673e7aca1acb4ca0d8afb"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63240/session/f3c26da9978673e7aca1acb4ca0d8afb/url {"url": "https://www.bahsegel96.com", "sessionId": "f3c26da9978673e7aca1acb4ca0d8afb"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63240/session/f3c26da9978673e7aca1acb4ca0d8afb/timeouts/implicit_wait {"ms": 30000.0, "sessionId": "f3c26da9978673e7aca1acb4ca0d8afb"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+--------------------- >> end captured logging << ---------------------
+</pre>
+                                <h4>Details</h4>
+                                <pre>open_result_in_browser() missing 1 required positional argument: 'file'
+-------------------- >> begin captured logging << --------------------
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63240/session {"capabilities": {"firstMatch": [], "alwaysMatch": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63240/session/f3c26da9978673e7aca1acb4ca0d8afb/window/current/size {"width": 1800, "height": 1800, "windowHandle": "current", "sessionId": "f3c26da9978673e7aca1acb4ca0d8afb"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63240/session/f3c26da9978673e7aca1acb4ca0d8afb/url {"url": "https://www.bahsegel96.com", "sessionId": "f3c26da9978673e7aca1acb4ca0d8afb"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63240/session/f3c26da9978673e7aca1acb4ca0d8afb/timeouts/implicit_wait {"ms": 30000.0, "sessionId": "f3c26da9978673e7aca1acb4ca0d8afb"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+--------------------- >> end captured logging << ---------------------</pre>
+                            </div>
+                        </section>
+                        <section id="start_bahsegel.Bahsegel:test_top_menu_registered">
+                            <h3>test_top_menu_registered: <strong>selenium.common.exceptions.NoSuchWindowException</strong></h3>
+                            <div class="test-details">
+                                <h4>Traceback</h4>
+                                <pre class="traceback">Traceback (most recent call last):
+  File "c:\users\oleksii\appdata\local\programs\python\python36\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+  File "c:\users\oleksii\appdata\local\programs\python\python36\lib\unittest\case.py", line 601, in run
+    testMethod()
+  File "C:\Users\oleksii\PycharmProjects\qa_gamingtec\start_bahsegel.py", line 42, in test_top_menu_registered
+    top_menu =test.check_top_menu()
+  File "C:\Users\oleksii\PycharmProjects\qa_gamingtec\just_actions.py", line 55, in check_top_menu
+    element_name = driver.find_element_by_xpath(new_xpath)
+  File "c:\users\oleksii\appdata\local\programs\python\python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 313, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "c:\users\oleksii\appdata\local\programs\python\python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "c:\users\oleksii\appdata\local\programs\python\python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "c:\users\oleksii\appdata\local\programs\python\python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=59.0.3071.115)
+  (Driver info: chromedriver=2.30.477700 (0057494ad8732195794a7b32078424f92a5fce41),platform=Windows NT 6.3.9600 x86_64)
+
+-------------------- >> begin captured stdout << ---------------------
+SPOR BAHİSLERİ
+CANLI BAHİS
+CASİNO
+CANLI CASİNO
+
+--------------------- >> end captured stdout << ----------------------
+-------------------- >> begin captured logging << --------------------
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session {"capabilities": {"firstMatch": [], "alwaysMatch": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/window/current/size {"width": 1800, "height": 1800, "windowHandle": "current", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/url {"url": "https://www.bahsegel96.com", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/timeouts/implicit_wait {"ms": 30000.0, "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "login-Button", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.6273006587775467-1/click {"id": "0.6273006587775467-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "username", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-1/clear {"id": "0.0615110737911877-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "username", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-1/value {"text": "Bahsegel_26", "value": ["B", "a", "h", "s", "e", "g", "e", "l", "_", "2", "6"], "id": "0.0615110737911877-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "password", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-2/clear {"id": "0.0615110737911877-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "password", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-2/value {"text": "qwerty26", "value": ["q", "w", "e", "r", "t", "y", "2", "6"], "id": "0.0615110737911877-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "loginBtnSubmit", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-3/click {"id": "0.0615110737911877-3", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/url {"sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/elements {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[1]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-12/click {"id": "0.0615110737911877-12", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[1]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.3970591554109939-1/text {"id": "0.3970591554109939-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[2]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.3970591554109939-2/click {"id": "0.3970591554109939-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[2]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.7597068140566356-1/text {"id": "0.7597068140566356-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[3]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.7597068140566356-2/click {"id": "0.7597068140566356-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[3]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.7862272907131365-1/text {"id": "0.7862272907131365-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[4]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.7862272907131365-2/click {"id": "0.7862272907131365-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[4]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.2324244797782431-1/text {"id": "0.2324244797782431-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[5]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.2324244797782431-2/click {"id": "0.2324244797782431-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[5]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+--------------------- >> end captured logging << ---------------------
+
+</pre>
+                                <h4>Details</h4>
+                                <pre>Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=59.0.3071.115)
+  (Driver info: chromedriver=2.30.477700 (0057494ad8732195794a7b32078424f92a5fce41),platform=Windows NT 6.3.9600 x86_64)
+
+-------------------- >> begin captured stdout << ---------------------
+SPOR BAHİSLERİ
+CANLI BAHİS
+CASİNO
+CANLI CASİNO
+
+--------------------- >> end captured stdout << ----------------------
+-------------------- >> begin captured logging << --------------------
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session {"capabilities": {"firstMatch": [], "alwaysMatch": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/window/current/size {"width": 1800, "height": 1800, "windowHandle": "current", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/url {"url": "https://www.bahsegel96.com", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/timeouts/implicit_wait {"ms": 30000.0, "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "login-Button", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.6273006587775467-1/click {"id": "0.6273006587775467-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "username", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-1/clear {"id": "0.0615110737911877-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "username", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-1/value {"text": "Bahsegel_26", "value": ["B", "a", "h", "s", "e", "g", "e", "l", "_", "2", "6"], "id": "0.0615110737911877-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "password", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-2/clear {"id": "0.0615110737911877-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "password", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-2/value {"text": "qwerty26", "value": ["q", "w", "e", "r", "t", "y", "2", "6"], "id": "0.0615110737911877-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "id", "value": "loginBtnSubmit", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-3/click {"id": "0.0615110737911877-3", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/url {"sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/elements {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[1]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.0615110737911877-12/click {"id": "0.0615110737911877-12", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[1]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.3970591554109939-1/text {"id": "0.3970591554109939-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[2]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.3970591554109939-2/click {"id": "0.3970591554109939-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[2]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.7597068140566356-1/text {"id": "0.7597068140566356-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[3]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.7597068140566356-2/click {"id": "0.7597068140566356-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[3]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.7862272907131365-1/text {"id": "0.7862272907131365-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[4]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.7862272907131365-2/click {"id": "0.7862272907131365-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[4]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.2324244797782431-1/text {"id": "0.2324244797782431-1", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[5]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element/0.2324244797782431-2/click {"id": "0.2324244797782431-2", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:63313/session/e84c6283011d74827d515be973b6ad8f/element {"using": "xpath", "value": "//*[@id=\"bodyScope\"]/header[1]/nav/div/ul/li[5]/a", "sessionId": "e84c6283011d74827d515be973b6ad8f"}
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+--------------------- >> end captured logging << ---------------------</pre>
+                            </div>
+                        </section>
+                </div>
+            </section>
+
+    <h1>All tests</h1>
+    <section>
+        <h2>start_bahsegel.Bahsegel (0 failures, 2 errors)</h2>
+        <ul>
+                <li><a class="success">test_login_to_page</a></li>
+                <li><a class="failed" href="#start_bahsegel.Bahsegel:test_open_result_page">test_open_result_page</a></li>
+                <li><a class="failed" href="#start_bahsegel.Bahsegel:test_top_menu_registered">test_top_menu_registered</a></li>
+        </ul>
+    </section>
+</body>
+<script>
+    Array.prototype.forEach.call(document.querySelectorAll('h1, h2, h3, h4'), function(el) {
+        el.addEventListener('click', function() {
+            el.nextElementSibling.style.display = document.defaultView.getComputedStyle(el.nextElementSibling).display == 'none' ? 'block' : 'none';
+        })
+    })
+</script>
+</html>
