@@ -1,81 +1,59 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from selenium import webdriver
+
+from just_actions import *
 
 
-from selenium.webdriver import ChromeOptions, Chrome
-import unittest,time
+import unittest,time,sys
 
-URL = "https://tst.bahsegel.info"
+
 NAME = "Bahsegel_26"
+# NAME = "testbahsegel"
+
 PASSW = "qwerty26"
 
 class Bahsegel(unittest.TestCase):
-    # def setUp(self):
-    #     self.driver = webdriver.Chrome()
-    #     driver = self.driver
-    #     driver.set_window_size(1800, 1800)
-
-
-
     def setUp(self):
-        opts = ChromeOptions()
-        opts.add_experimental_option("detach", True)
-        self.driver = Chrome(chrome_options=opts)
-        self.driver.set_window_size(1800,1800)
-        session_id = self.driver.session_id
+        pass
+
+    def test_url_of_login_page(self):
+        '''check url of login page'''
+        test = Action()
+        link_to_login = test.enter_to_page()
+        if self.assertEqual(link_to_login[0], link_to_login[1]):
+            test.close_driver()
 
 
-        self.driver.implicitly_wait(30)
-        self.driver.get(URL)
-        self.login()
-
-    # def test1(self):
-    #     '''check url of login page'''
-    #
-    #     driver = self.driver.session_id
-    #
-    #     driver.find_element_by_id('login-Button').click()
-    #     login_url = URL + "/tr/login"
-    #     self.assertEqual(login_url, self.driver.current_url)
-    def login(self):
-        driver = self.driver
-        driver.find_element_by_id('login-Button').click()
-        driver.find_element_by_id('username').clear()
-        driver.find_element_by_id('username').send_keys(NAME)
-        driver.find_element_by_id('password').clear()
-        driver.find_element_by_id('password').send_keys(PASSW)
-        driver.find_element_by_id('loginBtnSubmit').click()
-        return driver.session_id
-
-    def test_2(self):
-        '''check up  login on page'''
-        driver = self.driver
-
-        driver.get(URL)
-        driver.find_element_by_id('login-Button').click()
-        driver.find_element_by_id('username').clear()
-        driver.find_element_by_id('username').send_keys(NAME)
-        driver.find_element_by_id('password').clear()
-        driver.find_element_by_id('password').send_keys(PASSW)
-        driver.find_element_by_id('loginBtnSubmit').click()
+    def test_login_to_page(self):
+        test = Action()
+        login = test.login(NAME,PASSW)
+        if self.assertEqual(login[0],login[1]):
+            test.close_driver()
 
 
-    def test2(self):
+    def test_top_menu_unregistered(self):
+        test = Action()
+        top_menu =test.check_top_menu()
+        test.close_driver()
+
+    def test_top_menu_registered(self):
+        test = Action()
+        test.login(NAME,PASSW)
+        top_menu =test.check_top_menu()
+
+    def test_virtual_sport_menu(self):
+        test = Action()
+        test.login(NAME,PASSW)
+        test.enter_to_virtual_sport()
+        test.virtual_sport_click()
+
+    def test_open_result_page(self):
+        test =Action()
+        test.open_result_in_browser()
+    def test_quantity_lements_top_menu(self):
         '''chek quantity of elements in top menu'''
-        driver = self.driver
-        base_xpath = '//*[@id="bodyScope"]/header[1]/nav/div/ul/li'
-        top_menu = driver.find_elements_by_xpath(base_xpath)
-        num_of_element = len(top_menu)
-        i = 1
-        while i < num_of_element:
-            new_xpath = base_xpath + '[' + str(i) + ']' + '/a'
-            driver.find_element_by_xpath(new_xpath).click()
-            element_name = driver.find_element_by_xpath(new_xpath)
-            print element_name.text
-            i += 1
-
-        self.assertEqual(num_of_element-1,7)
+        test = Action()
+        self.assertEqual(test.check_top_menu(),7)
 
     def test3(self,value=2):
         '''make a bet'''
@@ -94,52 +72,64 @@ class Bahsegel(unittest.TestCase):
         # time.sleep(10)
         congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
         if len(driver.find_element_by_css_selector("div.congratText").text)>1:
-            print driver.find_element_by_css_selector("div.congratText").text
+            print (driver.find_element_by_css_selector("div.congratText").text)
         time.sleep(9)
-
-    def switch_frame(self):
-        driver = self.driver
-        my_frame = driver.find_element_by_id('sport_iframe_1')
-        driver.switch_to.frame(my_frame)
-
-
-    def test_4(self):
+    def test_check_logo(self):
         '''logo'''
-        driver = self.driver
-        self.assertEqual("", driver.find_element_by_css_selector("img.logo").text)
-        #VirtualSports
-    def test_5(self):
-        '''virtual sports footbol'''
-        pass
-    def test_6(self):
-        '''virtual sports basquet'''
+        test =Action()
+        logo = test.existing_logo()
+        self.assertEqual("", logo)
 
-        driver = self.driver
-        xpath = ".//*[@id='bodyScope']/header[1]/nav/div/ul/li[5]/a"
-        driver.find_element_by_xpath(xpath).click()
-        driver.find_element_by_xpath(".//*[@id='bodyScope']/div[1]/div/ul/li[2]").click()
+    # def virtual_menu(self):
+    #     element_name = []
+    #     my_text = self.driver.find_elements_by_xpath('//*[@id="page-top"]/div[1]/div[2]/ul/li')
+    #     for i in  my_text:
+    #         element_name.append(i.text)
+    #     for name in element_name:
+    #         self.driver.find_element_by_link_text(name).click()
+    # def test_open_virtual_sport_menu_element(self):
+    #     self.virtual_menu()
 
-    def test_9(self):
-        pass
-    def test_7(self):
-        '''virtual sports greyhounds'''
+    # def test_quantity_virtual_sports_menu_elements(self):
+    #     num_of_elements = len(self.virtual_sport_menu())
+    #     assert (num_of_elements,5)
+    # def test_virtual_sports_footbol(self):
+    #     '''virtual sports footbol'''
+    #     # self.login(NAME, PASSW)
+    #     driver = self.driver
+    #     xpath = ".//*[@id='bodyScope']/header[1]/nav/div/ul/li[5]/a"
+    #     driver.find_element_by_xpath(xpath).click()
+    #     driver.find_element_by_xpath(".//*[@id='bodyScope']/div[1]/div/ul/li[1]").click()
 
-        pass
-    def test_8(self):
-        '''virtual sports basquet'''
-        driver = self.driver
-
-        xpath = ".//*[@id='bodyScope']/header[1]/nav/div/ul/li[5]/a"
-        driver.find_element_by_xpath(xpath).click()
-        driver.find_element_by_xpath(".//*[@id='bodyScope']/div[1]/div/ul/li[2]").click()
-    def test_9(self):
-        '''virtual sports horseracing'''
-        pass
+    # def test_virtual_sports_basquet(self):
+    #     '''virtual sports basquet'''
+    #     self.login(NAME,PASSW)
+    #     driver = self.driver
+    #     xpath = ".//*[@id='bodyScope']/header[1]/nav/div/ul/li[5]/a"
+    #     driver.find_element_by_xpath(xpath).click()
+    #     driver.find_element_by_xpath(".//*[@id='bodyScope']/div[1]/div/ul/li[2]").click()
+    # #
+    # def test_9(self):
+    #     pass
+    # def test_7(self):
+    #     '''virtual sports greyhounds'''
+    #
+    #     pass
+    # def test_8(self):
+    #     '''virtual sports basquet'''
+    #     driver = self.driver
+    #
+    #     xpath = ".//*[@id='bodyScope']/header[1]/nav/div/ul/li[5]/a"
+    #     driver.find_element_by_xpath(xpath).click()
+    #     driver.find_element_by_xpath(".//*[@id='bodyScope']/div[1]/div/ul/li[2]").click()
+    # def test_9(self):
+    #     '''virtual sports horseracing'''
+    #     pass
 
     def tearDown(self):
-        self.driver.session_id
+      pass
 
-        self.driver.close()
+
 
 if __name__ == '__main__':
     unittest.main()
