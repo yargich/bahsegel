@@ -4,13 +4,13 @@ from selenium import webdriver
 # URL ="https://stg.bahsegel.info"
 import webbrowser, sys
 
-# NAME = "Bahsegel_26"
-NAME = "testbahsegel"
+NAME = "Bahsegel_26"
+# NAME = "testbahsegel"
 URLtst = "https://tst.bahsegel.info"
 URLstg = "https://stg.bahsegel.info"
 URLprod = "https://www.bahsegel96.com"
-# PASSW = "qwerty26"
-PASSW = "240207test"
+PASSW = "qwerty26"
+# PASSW = "240207test"
 
 
 class Action(object):
@@ -31,6 +31,7 @@ class Action(object):
         return link_to_login, current_url
 
     def click_registration(self):
+        '''open registration page'''
         driver = self.driver
         button_xpath ='//*[@id="bodyScope"]/header[1]/div/div[2]/a[1]/span'
         button_name = driver.find_element_by_xpath(button_xpath).text
@@ -38,8 +39,6 @@ class Action(object):
         
 
         print(driver.current_url)
-
-
 
 
     def login(self, name, passw):
@@ -52,6 +51,8 @@ class Action(object):
         driver.find_element_by_id('loginBtnSubmit').click()
         current_url = driver.current_url
         base_url = self.url + "/tr/login"
+        user_id = driver.find_element_by_class_name('userId').text
+        print (user_id)
         return current_url, base_url
 
     def enter_to_virtual_sport(self):
@@ -108,14 +109,18 @@ class Action(object):
 
     def close_driver(self):
         self.driver.quit()
-
+    def enter_registered_users(self,user_name,user_login):
+        self.login(user_name,user_login)
+        self.close_driver()
     def close_all(self):
         sys.exit()
 
 
 if __name__ == "__main__":
     test = Action()
-    test.click_registration()
+    # test.click_registration()
+    test.enter_registered_users(NAME,PASSW)
+
     # test.login("Bahsegel_26","qwerty26")
     # test.enter_to_virtual_sport()
     # test.virtual_sport_click()

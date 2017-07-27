@@ -1,7 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
+.idea/
 .idea/modules.xml
 .idea/qa_gamingtec.iml
 .idea/workspace.xml
 .idea/preferred-vcs.xml
 ghostdriver.log
 *.pyc
+debug.log
