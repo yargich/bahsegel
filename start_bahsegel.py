@@ -23,13 +23,11 @@ class Bahsegel(unittest.TestCase):
         if self.assertEqual(link_to_login[0], link_to_login[1]):
             test.close_driver()
 
-
     def test_login_to_page(self):
         test = Action()
         login = test.login(NAME,PASSW)
         if self.assertEqual(login[0],login[1]):
             test.close_driver()
-
 
     def test_top_menu_unregistered(self):
         test = Action()
