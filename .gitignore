@@ -7,3 +7,4 @@
 ghostdriver.log
 *.pyc
 debug.log
+gt_env
