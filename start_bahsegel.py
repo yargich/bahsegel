@@ -17,40 +17,41 @@ class Bahsegel(unittest.TestCase):
         pass
 
 
-    def test_logo_exist(self):
-        test = Action()
-        # test.start_request()
-        test.logo_exist()
-        test.open_svg_in_browser()
-        # test.close_driver()
-
-    def test_logo_url(self):
-        suff = '/img/logo.svg'
-        test = Action()
-        etalon_url = URLtst+suff
-        self.assertEqual(test.logo_url(),etalon_url)
-        test.close_driver()
-
-
-
-    def test_url_of_login_page(self):
-        '''check url of login page'''
-        test = Action()
-        link_to_login = test.enter_to_page()
-        self.assertEqual(link_to_login[0], link_to_login[1])
-        test.close_driver()
-
-
-    def test_successfully_login(self):
-        '''successfully login'''
-        test = Action()
-        test.login(NAME,PASSW)
-        test.close_driver()
-
-    # def test_top_menu_unregistered(self):
+    # def test_logo_exist(self):
     #     test = Action()
-    #     top_menu =test.check_top_menu()
+    #     # test.start_request()
+    #     test.logo_exist()
+    #     # test.open_svg_in_browser()
+    #     time.sleep(5)
     #     test.close_driver()
+    #
+    # def test_logo_url(self):
+    #     suff = '/img/logo.svg'
+    #     test = Action()
+    #     etalon_url = URLtst+suff
+    #     self.assertEqual(test.logo_url(),etalon_url)
+    #     test.close_driver()
+    #
+    #
+    #
+    # def test_url_of_login_page(self):
+    #     '''check url of login page'''
+    #     test = Action()
+    #     link_to_login = test.enter_to_page()
+    #     self.assertEqual(link_to_login[0], link_to_login[1])
+    #     test.close_driver()
+    #
+    #
+    # def test_successfully_login(self):
+    #     '''successfully login'''
+    #     test = Action()
+    #     test.login(NAME,PASSW)
+    #     test.close_driver()
+
+    def test_top_menu_unregistered(self):
+        test = Action()
+        test.check_top_menu()
+        test.close_driver()
 
     # def test_top_menu_registered(self):
     #     test = Action()

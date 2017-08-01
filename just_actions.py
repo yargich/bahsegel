@@ -166,6 +166,7 @@ class Action(object):
             element_name = driver.find_element_by_xpath(new_xpath)
             print(element_name.text)
             i += 1
+
         return num_of_element - 1
 
     def virtual_sport_click(self):
