@@ -32,10 +32,13 @@ class Action(object):
             print i
 
     def get_favicon(self):
+
+
         favicon_url= self.url+'/favicon.png'
-        picture = requests.get(self.url + favicon_url, auth=('beta5', 'gamma8'))
+        print favicon_url
+        picture = requests.get(favicon_url, auth=('beta5', 'gamma8'))
         code = picture.status_code
-        print code
+
         if code == 200:
             filename = open('favicon.png', 'wb')
             filename.write(picture.content)
@@ -168,7 +171,9 @@ class Action(object):
             i += 1
 
         return num_of_element - 1
+    def top_menu_with_login(self,name,passw):
 
+        self.check_top_menu()
     def virtual_sport_click(self):
         driver = self.driver
         self.enter_to_virtual_sport()
@@ -203,24 +208,24 @@ class Action(object):
         self.logo_url()
         self.logo_exist()
         self.open_svg_in_browser()
-    def start_request(self):
-        url = self.url
-        payload = " "
-        headers = {
-
-            'login': "beta5",
-            'password': "gamma8",
-            'cache-control': "no-cache",
-
-        }
-        response = requests.request("GET", url, data=payload, headers=headers)
-        return (response.text)
+    # def start_request(self):
+    #     url = self.url
+    #     payload = " "
+    #     headers = {
+    #
+    #         'login': "beta5",
+    #         'password': "gamma8",
+    #         'cache-control': "no-cache",
+    #
+    #     }
+    #     response = requests.request("GET", url, data=payload, headers=headers)
+    #     print response.text
 
 if __name__ == "__main__":
     test = Action()
-    test.login(NAME,PASSW)
+    # test.login(NAME,PASSW)
     # test.open_svg_in_browser()
-    # test.get_favicon()
+    test.get_favicon()
     # test.get_picture('favicon.png')
     # test.if_logo_are_exists()
     # test.open_svg_in_browser()

@@ -15,16 +15,19 @@ PASSW = "qwerty26"
 class Bahsegel(unittest.TestCase):
     def setUp(self):
         pass
+    def test_favicon_exist(self):
+        test = Action()
+        test.get_favicon()
+        test.close_driver()
 
+    def test_logo_exist(self):
+        test = Action()
+        # test.start_request()
+        test.logo_exist()
+        # test.open_svg_in_browser()
+        time.sleep(5)
+        test.close_driver()
 
-    # def test_logo_exist(self):
-    #     test = Action()
-    #     # test.start_request()
-    #     test.logo_exist()
-    #     # test.open_svg_in_browser()
-    #     time.sleep(5)
-    #     test.close_driver()
-    #
     # def test_logo_url(self):
     #     suff = '/img/logo.svg'
     #     test = Action()
@@ -48,11 +51,14 @@ class Bahsegel(unittest.TestCase):
     #     test.login(NAME,PASSW)
     #     test.close_driver()
 
-    def test_top_menu_unregistered(self):
-        test = Action()
-        test.check_top_menu()
-        test.close_driver()
-
+    # def test_top_menu_unregistered(self):
+    #     test = Action()
+    #     test.check_top_menu()
+    #     test.close_driver()
+    # def test_top_nenu_with_login(self):
+    #     test = Action()
+    #     test.top_menu_with_login(NAME,PASSW)
+    #     test.close_driver()
     # def test_top_menu_registered(self):
     #     test = Action()
     #     test.login(NAME,PASSW)
