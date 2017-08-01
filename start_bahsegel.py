@@ -16,67 +16,85 @@ class Bahsegel(unittest.TestCase):
     def setUp(self):
         pass
 
+
+    def test_logo_exist(self):
+        test = Action()
+        # test.start_request()
+        if test.logo_exist():
+            test.open_svg_in_browser()
+
+    def test_logo_url(self):
+        suff = '/img/logo.svg'
+        test = Action()
+        etalon_url = URLtst+suff
+        self.assertEqual(test.logo_url(),etalon_url)
+
+
+
     def test_url_of_login_page(self):
         '''check url of login page'''
         test = Action()
         link_to_login = test.enter_to_page()
-        if self.assertEqual(link_to_login[0], link_to_login[1]):
-            test.close_driver()
+        self.assertEqual(link_to_login[0], link_to_login[1])
 
-    def test_login_to_page(self):
-        test = Action()
-        login = test.login(NAME,PASSW)
-        if self.assertEqual(login[0],login[1]):
-            test.close_driver()
 
-    def test_top_menu_unregistered(self):
-        test = Action()
-        top_menu =test.check_top_menu()
-        test.close_driver()
-
-    def test_top_menu_registered(self):
+    def test_successfully_login(self):
+        '''successfully login'''
         test = Action()
         test.login(NAME,PASSW)
-        top_menu =test.check_top_menu()
 
-    def test_virtual_sport_menu(self):
-        test = Action()
-        test.login(NAME,PASSW)
-        test.enter_to_virtual_sport()
-        test.virtual_sport_click()
 
-    def test_open_result_page(self):
-        test =Action()
-        test.open_result_in_browser()
-    def test_quantity_lements_top_menu(self):
-        '''chek quantity of elements in top menu'''
-        test = Action()
-        self.assertEqual(test.check_top_menu(),7)
 
-    def test3(self,value=2):
-        '''make a bet'''
-        driver = self.driver
-        # self.switch_frame()
-        my_frame = driver.find_element_by_id('sport_iframe_1')
-        driver.switch_to.frame(my_frame)
-        #select first element in left menu
-        driver.find_element_by_xpath('//*[@id="champFav4485"]/span').click()
-        class_name = "prematch_stake_odd_factor"
-        driver.find_element_by_class_name(class_name).click()
-        #enter value in input field
-        driver.find_element_by_id("betAmountInput").send_keys(value)
-        #press the bet button
-        driver.find_element_by_class_name('btn_bet').click()
-        # time.sleep(10)
-        congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
-        if len(driver.find_element_by_css_selector("div.congratText").text)>1:
-            print (driver.find_element_by_css_selector("div.congratText").text)
-        time.sleep(9)
-    def test_check_logo(self):
-        '''logo'''
-        test =Action()
-        logo = test.existing_logo()
-        self.assertEqual("", logo)
+
+
+    # def test_top_menu_unregistered(self):
+    #     test = Action()
+    #     top_menu =test.check_top_menu()
+    #     test.close_driver()
+    #
+    # def test_top_menu_registered(self):
+    #     test = Action()
+    #     test.login(NAME,PASSW)
+    #     top_menu =test.check_top_menu()
+    #
+    # def test_virtual_sport_menu(self):
+    #     test = Action()
+    #     test.login(NAME,PASSW)
+    #     test.enter_to_virtual_sport()
+    #     test.virtual_sport_click()
+    #
+    # def test_open_result_page(self):
+    #     test =Action()
+    #     test.open_result_in_browser()
+    # def test_quantity_lements_top_menu(self):
+    #     '''chek quantity of elements in top menu'''
+    #     test = Action()
+    #     self.assertEqual(test.check_top_menu(),7)
+
+    # def test3(self,value=2):
+    #     '''make a bet'''
+    #     driver = self.driver
+    #     # self.switch_frame()
+    #     my_frame = driver.find_element_by_id('sport_iframe_1')
+    #     driver.switch_to.frame(my_frame)
+    #     #select first element in left menu
+    #     driver.find_element_by_xpath('//*[@id="champFav4485"]/span').click()
+    #     class_name = "prematch_stake_odd_factor"
+    #     driver.find_element_by_class_name(class_name).click()
+    #     #enter value in input field
+    #     driver.find_element_by_id("betAmountInput").send_keys(value)
+    #     #press the bet button
+    #     driver.find_element_by_class_name('btn_bet').click()
+    #     # time.sleep(10)
+    #     congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
+    #     if len(driver.find_element_by_css_selector("div.congratText").text)>1:
+    #         print (driver.find_element_by_css_selector("div.congratText").text)
+    #     time.sleep(9)
+    # def test_check_logo(self):
+    #     '''logo'''
+    #     test =Action()
+    #     logo = test.existing_logo()
+    #     self.assertEqual("", logo)
 
     # def virtual_menu(self):
     #     element_name = []
@@ -125,7 +143,8 @@ class Bahsegel(unittest.TestCase):
     #     pass
 
     def tearDown(self):
-      pass
+        pass
+
 
 
 
