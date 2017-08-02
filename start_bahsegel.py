@@ -15,55 +15,58 @@ PASSW = "qwerty26"
 class Bahsegel(unittest.TestCase):
     def setUp(self):
         pass
-    def test_favicon_exist(self):
+    def test_if_favicon_exists(self):
         test = Action()
         test.get_favicon()
         test.close_driver()
 
-    def test_logo_exist(self):
+    def test_if_logo_exists(self):
         test = Action()
-        # test.start_request()
         test.logo_exist()
         # test.open_svg_in_browser()
         time.sleep(5)
         test.close_driver()
 
-    # def test_logo_url(self):
-    #     suff = '/img/logo.svg'
-    #     test = Action()
-    #     etalon_url = URLtst+suff
-    #     self.assertEqual(test.logo_url(),etalon_url)
-    #     test.close_driver()
-    #
-    #
-    #
-    # def test_url_of_login_page(self):
-    #     '''check url of login page'''
-    #     test = Action()
-    #     link_to_login = test.enter_to_page()
-    #     self.assertEqual(link_to_login[0], link_to_login[1])
-    #     test.close_driver()
-    #
-    #
-    # def test_successfully_login(self):
-    #     '''successfully login'''
-    #     test = Action()
-    #     test.login(NAME,PASSW)
-    #     test.close_driver()
+    def test_logo_url(self):
+        suff = '/img/logo.svg'
+        test = Action()
+        etalon_url = URLtst+suff
+        self.assertEqual(test.logo_url(),etalon_url)
+        test.close_driver()
 
-    # def test_top_menu_unregistered(self):
-    #     test = Action()
-    #     test.check_top_menu()
-    #     test.close_driver()
-    # def test_top_nenu_with_login(self):
-    #     test = Action()
-    #     test.top_menu_with_login(NAME,PASSW)
-    #     test.close_driver()
-    # def test_top_menu_registered(self):
-    #     test = Action()
-    #     test.login(NAME,PASSW)
-    #     top_menu =test.check_top_menu()
-    #
+    def test_url_of_login_page(self):
+        '''check url of login page'''
+        test = Action()
+        link_to_login = test.enter_to_page()
+        self.assertEqual(link_to_login[0], link_to_login[1])
+        test.close_driver()
+    def test_forgot_password(self):
+        '''checks forgot_password button value'''
+        test=Action()
+        current_value = test.forgot_password()
+        test.close_driver()
+        self.assertEqual( u"Şifremi Unuttum?",current_value)
+
+    def test_successfully_login(self):
+        '''successfully login'''
+        test = Action()
+        test.login(NAME,PASSW)
+        test.close_driver()
+
+    def test_nav_menu_unregistered(self):
+        '''Checks elements of nav menu without login'''
+        test = Action()
+        test.check_top_menu()
+        test.close_driver()
+    def test_nav_nenu_with_login(self):
+        '''Checks elements of nav menu with login'''
+        test = Action()
+        test.login(NAME,PASSW)
+        time.sleep(12)
+        test.check_top_menu()
+        test.close_driver()
+
+
     # def test_virtual_sport_menu(self):
     #     test = Action()
     #     test.login(NAME,PASSW)
