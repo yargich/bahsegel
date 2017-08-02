@@ -4,14 +4,14 @@ import requests, time
 import webbrowser,os,sys
 from selenium import webdriver
 
-# URL ="https://stg.bahsegel.info"
+
 
 
 NAME = "Bahsegel_26"
 # NAME = "testbahsegel"
 URLtst = "https://tst.bahsegel.info"
-# URLstg = "https://stg.bahsegel.info"
-# URLprod = "https://www.bahsegel97.com"
+URLstg = "https://stg.bahsegel.info"
+URLprod = "https://www.bahsegel97.com"
 PASSW = "qwerty26"
 # PASSW = "240207test"
 
@@ -136,12 +136,12 @@ class Action(object):
 
     def enter_to_virtual_sport(self):
         driver = self.driver
-        virtual_sports_button = './/*[@id="bodyScope"]/header[1]/nav/div/ul/li[5]/a'
-        driver.find_element_by_xpath(virtual_sports_button).click()
-        name_of_button = driver.find_element_by_xpath(virtual_sports_button).text
-        print(name_of_button)
-        driver.find_element_by_link_text(name_of_button).click()
-        return name_of_button
+        virtual_sports_xpath = './/*[@id="bodyScope"]/header[1]/nav/div/ul/li[5]/a'
+        virtual_sport_button = driver.find_element_by_xpath(virtual_sports_xpath)
+        virtual_sport_button.click()
+        # name_of_button = virtual_sport_button.text
+        # print name_of_button
+
 
     def logo_url(self):
         '''check url of logo '''
@@ -158,8 +158,6 @@ class Action(object):
 
 
     def check_top_menu(self):
-
-
         driver = self.driver
         base_xpath = '//*[@id="bodyScope"]/header[1]/nav/div/ul/li'
         top_menu = driver.find_elements_by_xpath(base_xpath)
@@ -171,8 +169,8 @@ class Action(object):
             element_name = driver.find_element_by_xpath(new_xpath)
             print(element_name.text)
             i += 1
-
         return num_of_element - 1
+
     def forgot_password(self):
         driver = self.driver
         driver.find_element_by_id('login-Button').click()
@@ -180,10 +178,88 @@ class Action(object):
         forgot_password.click()
         value = forgot_password.text
         return value
+    def soccer_button(self):
+        driver =self.driver
+        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[1]'
+        driver.find_element_by_xpath(base_xpath).click()
+        name = driver.find_element_by_xpath(base_xpath).text
+        print name,'is ok...'
 
+    def basquet_button(self):
+        driver = self.driver
+        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[2]'
+        driver.find_element_by_xpath(base_xpath).click()
+        name = driver.find_element_by_xpath(base_xpath).text
+        print name,'is ok...'
+
+    def greyhounds_button(self):
+        driver = self.driver
+        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[3]'
+        driver.find_element_by_xpath(base_xpath).click()
+        name = driver.find_element_by_xpath(base_xpath).text
+        print name,'is ok...'
+    def show_name(self,name):
+        print name
+    def horseracing_button(self):
+        driver = self.driver
+        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[4]'
+        driver.find_element_by_xpath(base_xpath).click()
+        name = driver.find_element_by_xpath(base_xpath).text
+        print name,'is ok...'
+
+    def tennis_button(self):
+        driver = self.driver
+        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[5]'
+        driver.find_element_by_xpath(base_xpath).click()
+        name = driver.find_element_by_xpath(base_xpath).text
+        print name,'is ok...'
 
 
     def virtual_sport_click(self):
+        driver = self.driver
+
+        self.enter_to_virtual_sport()
+        self.soccer_button()
+        self.basquet_button()
+        self.greyhounds_button()
+        self.horseracing_button()
+        self.tennis_button()
+
+
+        # for i in driver.find_elements_by_class_name("active"):
+        #     print i.text
+        # base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li/a/'
+        # number_of_element = len(base_xpath)
+        # print number_of_element
+
+        # for i in driver.find_elements_by_xpath(base_xpath):
+        #     items_name = i.text
+        #     print unicode(items_name)
+
+            # driver.find_element_by_link_text(items_name).click()
+
+
+
+
+
+
+
+            # new_xpath = base_xpath + '[' + str(i) + ']' + '/a'
+            # driver.find_element_by_xpath(new_xpath).click()
+            # element_name = driver.find_element_by_xpath(new_xpath)
+            # print(element_name.text)
+            # i += 1
+            # return num_of_element - 1
+
+        # i = 1
+        # while i < num_of_element:
+        #     new_xpath = base_xpath + '[' + str(i) + ']' + '/a'
+        #     driver.find_element_by_xpath(new_xpath).click()
+        #     element_name = driver.find_element_by_xpath(new_xpath)
+        #     print(element_name.text)
+        #     i += 1
+
+    def virtual_sport_clickk(self):
         driver = self.driver
         self.enter_to_virtual_sport()
         footbollXPATH = '//*[@id="bodyScope"]/div[1]/div/ul/li[1]/a/span'
@@ -226,14 +302,14 @@ if __name__ == "__main__":
     test = Action()
     # test.login(NAME,PASSW)
     # test.open_svg_in_browser()
-    test.forgot_password()
+    # test.forgot_password()
     # test.get_favicon()
     # test.get_picture('favicon.png')
     # test.if_logo_are_exists()
     # test.open_svg_in_browser()
     # test.click_registration()
     # test.enter_registered_users(NAME,PASSW)
-
+    test.virtual_sport_click()
     # test.login("Bahsegel_26","qwerty26")
     # test.enter_to_virtual_sport()
     # test.virtual_sport_click()
