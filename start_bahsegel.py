@@ -17,10 +17,8 @@ class Bahsegel(unittest.TestCase):
         print 'Testing now:'
 
     def test_favicon_exists(self):
-
-
         test = Action()
-        test.show_name('favicon exists)
+        test.show_name('favicon exists')
         test.get_favicon()
         test.close_driver()
 
@@ -35,62 +33,74 @@ class Bahsegel(unittest.TestCase):
 
     def test_logo_url(self):
 
+
         suff = '/img/logo.svg'
         test = Action()
-        test.show_name('logo url')
+        test.show_name('Url of logo')
+
         etalon_url = URLtst+suff
         self.assertEqual(test.logo_url(),etalon_url)
         test.close_driver()
-    #
-    # def test_url_of_login_page(self):
-    #     '''check url of login page'''
-    #     test = Action()
-    #     link_to_login = test.enter_to_page()
-    #     self.assertEqual(link_to_login[0], link_to_login[1])
-    #     test.close_driver()
-    # def test_forgot_password(self):
-    #     '''checks forgot_password button value'''
-    #     test=Action()
-    #     current_value = test.forgot_password()
-    #     test.close_driver()
-    #     self.assertEqual( u"Şifremi Unuttum?",current_value)
-    #
-    # def test_successfully_login(self):
-    #     '''successfully login'''
-    #     test = Action()
-    #     test.login(NAME,PASSW)
-    #     test.close_driver()
-    #
-    # def test_nav_menu_unregistered(self):
-    #     '''Checks elements of nav menu without login'''
-    #     test = Action()
-    #     test.check_top_menu()
-    #     test.close_driver()
-    #
-    # def test_number_elements_nav_menu(self):
-    #     '''count quantity of elements in nav menu'''
-    #     test = Action()
-    #     test.login(NAME, PASSW)
-    #
-    #     self.assertEqual(test.check_top_menu(),7)
-    #     test.close_driver()
-    #
-    # def test_nav_nenu_with_login(self):
-    #     '''Checks elements of nav menu with login'''
-    #     test = Action()
-    #     test.login(NAME,PASSW)
-    #     time.sleep(5)
-    #     test.check_top_menu()
-    #     test.close_driver()
-    #
-    #
-    # def test_virtual_sport_menu(self):
-    #     test = Action()
-    #     test.login(NAME,PASSW)
-    #
-    #     time.sleep(4)
-    #     test.virtual_sport_click()
-    #     test.close_driver()
+
+    def test_url_of_login_page(self):
+        test.show_name('Url of login page')
+        '''check url on login page'''
+        test = Action()
+        link_to_login = test.enter_to_page()
+        self.assertEqual(link_to_login[0], link_to_login[1])
+        test.close_driver()
+    def test_forgot_password(self):
+        '''checks forgot_password button value'''
+
+        test=Action()
+        test.show_name('Forgot password button')
+        current_value = test.forgot_password()
+
+        self.assertEqual( u"Şifremi Unuttum?",current_value)
+        test.close_driver()
+
+    def test_successfully_login(self):
+        '''successfully login'''
+        test = Action()
+        test.show_name('Successfully login')
+        test.login(NAME,PASSW)
+        test.close_driver()
+
+    def test_nav_menu_unregistered(self):
+        '''Checks elements of nav menu without login'''
+        test = Action()
+        test.show_name('Elements of nav menu without login')
+        test.check_top_menu()
+        test.close_driver()
+
+    def test_number_elements_nav_menu(self):
+        '''counts quantity of elements in nav menu'''
+        test = Action()
+        test.show_name('Counts quantity of elements in nav menu')
+        test.login(NAME, PASSW)
+
+        self.assertEqual(test.check_top_menu(),7)
+        test.close_driver()
+
+    def test_nav_nenu_with_login(self):
+        '''Checks elements of nav menu with login'''
+        test = Action()
+        test.show_name('Elements of nav menu with login')
+        test.login(NAME,PASSW)
+        time.sleep(5)
+        test.check_top_menu()
+        test.close_driver()
+
+
+    def test_virtual_sport_menu(self):
+        '''Elements of virtual sport menu with login'''
+        test = Action()
+        test.show_name('Elements of virtual sport menu with login')
+        test.login(NAME,PASSW)
+
+        time.sleep(4)
+        test.virtual_sport_click()
+        test.close_driver()
     #
     # def test_open_result_page(self):
     #     test =Action()
@@ -116,21 +126,6 @@ class Bahsegel(unittest.TestCase):
     #     if len(driver.find_element_by_css_selector("div.congratText").text)>1:
     #         print (driver.find_element_by_css_selector("div.congratText").text)
     #     time.sleep(9)
-    # def test_check_logo(self):
-    #     '''logo'''
-    #     test =Action()
-    #     logo = test.existing_logo()
-    #     self.assertEqual("", logo)
-
-    # def virtual_menu(self):
-    #     element_name = []
-    #     my_text = self.driver.find_elements_by_xpath('//*[@id="page-top"]/div[1]/div[2]/ul/li')
-    #     for i in  my_text:
-    #         element_name.append(i.text)
-    #     for name in element_name:
-    #         self.driver.find_element_by_link_text(name).click()
-    # def test_open_virtual_sport_menu_element(self):
-    #     self.virtual_menu()
 
     # def test_quantity_virtual_sports_menu_elements(self):
     #     num_of_elements = len(self.virtual_sport_menu())

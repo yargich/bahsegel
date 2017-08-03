@@ -199,8 +199,12 @@ class Action(object):
         name = driver.find_element_by_xpath(base_xpath).text
         print name,'is ok...'
     def show_name(self,name):
+        '''shows name of test'''
         print name
+
+
     def horseracing_button(self):
+        '''click on button '''
         driver = self.driver
         base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[4]'
         driver.find_element_by_xpath(base_xpath).click()
