@@ -4,7 +4,7 @@ import requests, time
 import webbrowser,os,sys
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-
+from selenium.webdriver.support.ui import Select
 
 NAME = "Bahsegel_26"
 
@@ -118,10 +118,9 @@ class Action(object):
         driver.find_element_by_id('username').send_keys(name)
         driver.find_element_by_id('password').clear()
         driver.find_element_by_id('password').send_keys(passw)
-
         subbutton_xpath = '//*[@id="loginBtnSubmit"]'
         driver.find_element_by_xpath(subbutton_xpath).click()
-        print "Login with users name {0} and password {1} was successfull...".format(NAME,PASSW)
+        print "\nLogin with users name {0} and password {1} was successfull...\n".format(NAME,PASSW)
         return 'login successfull'
 
     def login_redirect(self, name, passw):
@@ -306,7 +305,10 @@ class Action(object):
     def if_logo_are_exists(self):
         self.logo_url()
         self.logo_exist()
-        self.open_svg_in_browser()
+        # self.open_svg_in_browser()
+
+    def multy_bet(self, value=2):
+        pass
 
     def simple_bet(self,value = 2):
         '''place a bet'''
@@ -316,7 +318,6 @@ class Action(object):
         driver.switch_to.frame(my_frame)
         row = driver.find_elements_by_class_name('leftMenuIcon')
         row[0].click()
-        time.sleep(3)
         class_name = "prematch_stake_odd_factor"
         driver.find_element_by_class_name(class_name).click()
         # driver.find_element_by_id("betAmountInput").send_keys(value)
@@ -326,42 +327,47 @@ class Action(object):
         driver.find_element_by_id("betAmountInput").clear()
         driver.find_element_by_id("betAmountInput").send_keys(value)
         driver.find_element_by_class_name('btn_bet').click()
-        # time.sleep(10)
         congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
         if len(driver.find_element_by_css_selector("div.congratText").text)>1:
             print (driver.find_element_by_css_selector("div.congratText").text)
 
-        # NameOnly=[]
-        # List = str(row[0].text).split('8')
-        # List = List[1:]
-        # for i in List:
-        #     NameOnly.append(i.replace('\n',''))
-        # First_row = NameOnly[0]
-        # print First_row
-        # driver.find_element_by_link_text(First_row).click()
-
-        # for i in row:
-        #     print str(i.text).split('8')
-
-        # my_xpath = './/*[@id="champFav5169"]/span'
-        # driver.find_element_by_xpath(my_xpath).click()
-        # class_name = "prematch_stake_odd_factor"
-        # driver.find_element_by_class_name(class_name).click()
-
-        # driver.find_element_by_id("betAmountInput").send_keys(value)
-
-        # driver.find_element_by_class_name('btn_bet').click()
-        # time.sleep(10)
-        # congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
-        # if len(driver.find_element_by_css_selector("div.congratText").text)>1:
-        #     print (driver.find_element_by_css_selector("div.congratText").text)
+    def my_account(self):
+        driver = self.driver
+        self.login(NAME,PASSW)
+        driver.switch_to.default_content()
+        self.user_menu_click()
 
 
+    def user_menu_click(self,numbers_menu_elements=8):
+        i=1
+        driver = self.driver
 
+        time.sleep(2)
+
+
+        while i< numbers_menu_elements:
+
+            driver.find_element_by_class_name('btn-usermenu').click()
+            myXPATH = '//*[@id="myAccBtn"]/ul/li[' + str(i) + ']'
+            buttons_name = driver.find_element_by_xpath(myXPATH).text
+            driver.find_element_by_xpath(myXPATH).click()
+
+            i += 1
+
+            print buttons_name+" was clicked...\n"
+
+
+
+        # driver.find_element_by_class_name('btn-usermenu').click()
+        # time.sleep(3)
+        # driver.find_element_by_xpath('//*[@id="myAccBtn"]/ul/li[1]').click()
+        # time.sleep(3)
+        # driver.find_element_by_class_name('btn-usermenu').click()
+        # driver.find_element_by_xpath('//*[@id="myAccBtn"]/ul/li[2]').click()
 
 if __name__ == "__main__":
     test = Action()
-    test.simple_bet()
+    test.my_account()
     # test.login(NAME,PASSW)
     # test.open_svg_in_browser()
     # test.forgot_password()
