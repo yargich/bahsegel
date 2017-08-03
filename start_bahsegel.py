@@ -108,16 +108,25 @@ class Bahsegel(unittest.TestCase):
     #     time.sleep(3)
     #     test.virtual_sport_click()
     #     test.close_driver()
+    # def test_multy_bet(self):
+    #     '''Place multy bet'''
+    #     test = Action()
+    #     test.show_name('Simple bet')
+    #     test.multy_bet(2)
+    #
+    #     test.close_driver()
+    #
+    # def test_simple_bet(self):
+    #     '''Place simple bet'''
+    #     test = Action()
+    #     test.show_name('Simple bet')
+    #     test.simple_bet()
+    #     test.close_driver()
 
-
-    def test_simple_bet(self):
-        '''Checks elements of nav menu with login'''
+    def test_click_users_menu(self):
         test = Action()
-        test.show_name('Simple bet')
-        test.simple_bet()
-
+        test.my_account()
         test.close_driver()
-
 
     # def test_quantity_virtual_sports_menu_elements(self):
     #     num_of_elements = len(self.virtual_sport_menu())
