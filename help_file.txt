@@ -10,18 +10,8 @@ beta5
 gamma8
 
 
-oleksii.havrylov [4:27 PM]
-спасибо
 
 
-anna.matviienko [4:29 PM]
-пожалуйста
-
-
-
------ July 12th -----
-anna.matviienko [12:14 PM]
-test
 
 
 oleksii.havrylov [12:15 PM]
@@ -47,7 +37,7 @@ anna.matviienko [3:48 PM]
    "endBettingPeriod": "2017-04-07"
 
 
-[3:48]
+
 "@devs.Desktop.trbet": {
    "domain": "http://devs.trbet.com",
    "login": "qa_user26",
@@ -60,7 +50,6 @@ anna.matviienko [3:48 PM]
    "endBettingPeriod": "2017-04-07"
 
 
-[3:49]
 "@stg.Desktop.trbet": {
    "domain": "https://stg.trbet.com",
    "login": "tbsaparkar",
@@ -73,7 +62,6 @@ anna.matviienko [3:48 PM]
    "endBettingPeriod": "2017-04-07"
 
 
-[3:49]
 "@www.Desktop.trbet": {
    "domain": "https://www.trbet55.com",
    "login": "tbsaparkar",
@@ -86,7 +74,6 @@ anna.matviienko [3:48 PM]
    "endBettingPeriod": "2017-04-07"
 
 
-[3:49]
 "@tst.Mobile.trbet": {
    "domain": "https://tst-m.trbet.com",
    "login": "qa_user26",
@@ -99,7 +86,6 @@ anna.matviienko [3:48 PM]
    "endBettingPeriod": "2017-04-07"
 
 
-[3:49]
 "@stg.Mobile.trbet": {
    "domain": "https://stg-m.trbet.com",
    "login": "tbsaparkar",
@@ -112,7 +98,7 @@ anna.matviienko [3:48 PM]
    "endBettingPeriod": "2017-04-07"
 
 
-[3:50]
+
 "@tst.Desktop.bettilt": {
    "domain": "https://tst.bettilt.com",
    "login": "btsaparkar",
@@ -167,7 +153,6 @@ Bettilt é o local onde poderas jogar casino online ou apostas desportivas
    "endBettingPeriod": "2017-04-07"
 
 
-[3:50]
 "@tst.Desktop.casibon": {
    "domain": "https://tst.casibon.com",
    "login": "testuser1",
@@ -178,11 +163,8 @@ Bettilt é o local onde poderas jogar casino online ou apostas desportivas
    "playHistoryTime": "All"
 
 
-oleksii.havrylov [3:50 PM]
-thank you verry much
 
 
-anna.matviienko [3:50 PM]
 "@stg.Desktop.casibon": {
    "domain": "https://stg.casibon.com",
    "login": "testuser1",
