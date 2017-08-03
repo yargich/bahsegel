@@ -23,8 +23,7 @@ https://drive.google.com/drive/folders/0B6RDFsZpiaGlRElodHNPRXQzWUk
 
 
 
------ July 13th -----
-anna.matviienko [3:48 PM]
+
 "@tst.Desktop.trbet": {
    "domain": "https://tst.trbet.com",
    "login": "qa_user26",

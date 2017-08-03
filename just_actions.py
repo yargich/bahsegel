@@ -3,26 +3,32 @@
 import requests, time
 import webbrowser,os,sys
 from selenium import webdriver
-
-
+from selenium.webdriver.common.keys import Keys
 
 
 NAME = "Bahsegel_26"
-# NAME = "testbahsegel"
+
 URLtst = "https://tst.bahsegel.info"
 URLstg = "https://stg.bahsegel.info"
 URLprod = "https://www.bahsegel97.com"
 PASSW = "qwerty26"
-# PASSW = "240207test"
+
 
 
 class Action(object):
     def __init__(self):
-        self.url = URLtst
+        self.url = URLstg
         self.driver = webdriver.Chrome()
-        self.driver.set_window_size(1800, 1000)
+        self.driver.set_window_size(1800, 1800)
         self.driver.get(self.url)
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(10)
+    def precondition(self):
+        for i in os.listdir('./'):
+            Suff = ['.png','.html']
+            for item in Suff:
+                if i.endswith(item):
+                    os.remove(i)
+                    print i+" is deleted..."
 
 
     def get_window_name(self):
@@ -202,7 +208,6 @@ class Action(object):
         '''shows name of test'''
         print name
 
-
     def horseracing_button(self):
         '''click on button '''
         driver = self.driver
@@ -221,13 +226,16 @@ class Action(object):
 
     def virtual_sport_click(self):
         driver = self.driver
-
         self.enter_to_virtual_sport()
-        self.soccer_button()
-        self.basquet_button()
-        self.greyhounds_button()
-        self.horseracing_button()
         self.tennis_button()
+        self.horseracing_button()
+        self.greyhounds_button()
+        self.basquet_button()
+        self.soccer_button()
+
+
+
+
 
 
         # for i in driver.find_elements_by_class_name("active"):
@@ -279,9 +287,8 @@ class Action(object):
 
     def open_result_in_browser(self, filename = "nosetests.html"):
         '''opens results in Chrome'''
+        pass
 
-        myComand = 'open -a \'Google Chrome\ '+filename
-        os.system(myComand)
         # webbrowser.open(filename)
 
     def switch_frame(self):
@@ -301,19 +308,74 @@ class Action(object):
         self.logo_exist()
         self.open_svg_in_browser()
 
+    def simple_bet(self,value = 2):
+        '''place a bet'''
+        driver = self.driver
+        self.login(NAME,PASSW)
+        my_frame = driver.find_element_by_id('sport_iframe_1')
+        driver.switch_to.frame(my_frame)
+        row = driver.find_elements_by_class_name('leftMenuIcon')
+        row[0].click()
+        time.sleep(3)
+        class_name = "prematch_stake_odd_factor"
+        driver.find_element_by_class_name(class_name).click()
+        # driver.find_element_by_id("betAmountInput").send_keys(value)
+        driver.switch_to.default_content()
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        driver.switch_to.frame(my_frame)
+        driver.find_element_by_id("betAmountInput").clear()
+        driver.find_element_by_id("betAmountInput").send_keys(value)
+        driver.find_element_by_class_name('btn_bet').click()
+        # time.sleep(10)
+        congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
+        if len(driver.find_element_by_css_selector("div.congratText").text)>1:
+            print (driver.find_element_by_css_selector("div.congratText").text)
+
+        # NameOnly=[]
+        # List = str(row[0].text).split('8')
+        # List = List[1:]
+        # for i in List:
+        #     NameOnly.append(i.replace('\n',''))
+        # First_row = NameOnly[0]
+        # print First_row
+        # driver.find_element_by_link_text(First_row).click()
+
+        # for i in row:
+        #     print str(i.text).split('8')
+
+        # my_xpath = './/*[@id="champFav5169"]/span'
+        # driver.find_element_by_xpath(my_xpath).click()
+        # class_name = "prematch_stake_odd_factor"
+        # driver.find_element_by_class_name(class_name).click()
+
+        # driver.find_element_by_id("betAmountInput").send_keys(value)
+
+        # driver.find_element_by_class_name('btn_bet').click()
+        # time.sleep(10)
+        # congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
+        # if len(driver.find_element_by_css_selector("div.congratText").text)>1:
+        #     print (driver.find_element_by_css_selector("div.congratText").text)
+
+
+
 
 if __name__ == "__main__":
     test = Action()
+    test.simple_bet()
     # test.login(NAME,PASSW)
     # test.open_svg_in_browser()
     # test.forgot_password()
+    # test.precondition()
     # test.get_favicon()
+
+
     # test.get_picture('favicon.png')
     # test.if_logo_are_exists()
     # test.open_svg_in_browser()
     # test.click_registration()
     # test.enter_registered_users(NAME,PASSW)
-    test.virtual_sport_click()
+    # test.virtual_sport_click()
     # test.login("Bahsegel_26","qwerty26")
     # test.enter_to_virtual_sport()
     # test.virtual_sport_click()
+

@@ -9,5 +9,5 @@ ghostdriver.log
 debug.log
 gt_env
 geckodriver.log
-nosetests.html
+
 favicon.png
