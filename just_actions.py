@@ -1,41 +1,37 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import requests, time
-import webbrowser,os,sys
+import webbrowser,os,sys, random
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.common.keys import Keys
+
 from selenium.webdriver.support.ui import Select
 
-NAME = "Bahsegel_26"
 
-URLtst = "https://tst.bahsegel.info"
-URLstg = "https://stg.bahsegel.info"
-URLprod = "https://www.bahsegel97.com"
+BASEURL = 'https://tst.bahsegel.info'
+
+NAME = "Bahsegel_26"
 PASSW = "qwerty26"
 
-
-
-class Action(object):
+class Email():
     def __init__(self):
-        self.url = URLstg
+
+        self.driver = webdriver.Chrome()
+        self.driver.get('https://mailinator.com/')
+    def enter_value(self,value):
+        self.driver.find_element_by_xpath('//*[@id="inboxfield"]').send_keys(value)
+        self.driver.find_element_by_xpath('/html/body/section[1]/div/div[3]/div[2]/div[2]/div[1]/span/button').click()
+        time.sleep(10)
+
+
+class Action():
+    def __init__(self):
+        self.url = BASEURL
         self.driver = webdriver.Chrome()
         self.driver.set_window_size(1800, 1800)
         self.driver.get(self.url)
         self.driver.implicitly_wait(10)
-    def precondition(self):
-        for i in os.listdir('./'):
-            Suff = ['.png','.html']
-            for item in Suff:
-                if i.endswith(item):
-                    os.remove(i)
-                    print i+" is deleted..."
-
-
-    def get_window_name(self):
-        driver = self.driver
-        string_title = self.driver.window_handles
-        for i in string_title:
-            print i
+        self.personal_suffix = random.randint(0,123999)
 
     def get_favicon(self):
         favicon_url= self.url+'/favicon.png'
@@ -89,6 +85,93 @@ class Action(object):
         filename = self.get_logo()
         webbrowser.open_new_tab('file://' + os.path.realpath(filename))
 
+    def signup_button(self):
+        driver = self.driver
+        driver.find_elements_by_class_name('header-login')[0].click()
+        # for i in driver.find_elements_by_class_name('header-login'):
+        #     print i.click()
+
+
+    def input(self,id,value):
+        driver =self.driver
+        driver.find_element_by_id(id).send_keys(value)
+
+
+    def drop_down(self,id,value):
+        select  = Select(self.driver.find_element_by_id(id))
+        select.select_by_value(value)
+
+    def generate_int(self):
+        return self.personal_suffix
+
+    def generate_NewUserName(self,name):
+        return name
+    def go_to_mail(self):
+        new_driver = self.driver.get('https://www.mailinator.com/')
+        return new_driver.find_element_by_xpath('//*[@id="inboxfield"]').send
+
+    def registration(self):
+        driver = self.driver
+        self.signup_button()
+        NewName =  'bahsegel'+str(self.generate_int())
+        email_provider = 'mailinator.com'
+        mail = NewName + '@' + email_provider
+
+        self.input('gamingtec_register_username',NewName)
+        self.input('gamingtec_register_password', 'qazwsx123')
+        self.input('gamingtec_register_repeatPassword', 'qazwsx123')
+
+        self.input('gamingtec_register_email', mail)
+        self.input('gamingtec_register_repeatEmail',mail)
+
+        select = Select(self.driver.find_element_by_id('gamingtec_register_securityQuestion'))
+        select.select_by_value('What is your date of birth?')
+
+
+
+        self.input('gamingtec_register_securityAnswer', '11.07.1970')
+
+
+        select_currency = Select(self.driver.find_element_by_id('currencySelect'))
+        select_currency.select_by_index(2)
+
+
+        self.input('gamingtec_register_firstName','Omar')
+
+        self.input('gamingtec_register_lastName', 'Asker')
+        select_gender =Select(self.driver.find_element_by_id('gamingtec_register_gender'))
+        select_gender.select_by_value('M')
+
+
+        select_birth_day =Select(self.driver.find_element_by_id('gamingtec_register_birthDate_day'))
+        select_birth_day.select_by_value('11')
+
+        select_birth_month = Select(self.driver.find_element_by_id('gamingtec_register_birthDate_month'))
+        select_birth_month.select_by_value('7')
+
+        select_birth_year =Select(self.driver.find_element_by_id('gamingtec_register_birthDate_year'))
+        select_birth_year.select_by_value('1970')
+
+        self.input('gamingtec_register_address','Harbiye Mahallesi, Cumhuriyet  50')
+        self.input('gamingtec_register_postalCode', '34367')
+        self.input('gamingtec_register_city','Istanbul')
+        select_country = Select(self.driver.find_element_by_id('gamingtec_register_country'))
+        select_country.select_by_value('TN')
+        select_country.select_by_value('TR')
+        self.input('gamingtec_register_mobilePhone', '902123156000')
+
+        time.sleep(2)
+        self.driver.find_elements_by_xpath('//*[@id="gamingtec_register_receiveEmail"]')[0].click()
+
+        self.driver.find_elements_by_xpath('//*[@id="gamingtec_register_agreeTermAndConditions"]')[0].click()
+
+
+        self.driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/div[3]/div[1]/form/button').click()
+
+
+        go_to_mail = Email()
+        go_to_mail.enter_value(NewName)
+
 
 
     def enter_to_page(self):
@@ -113,6 +196,7 @@ class Action(object):
 
     def login(self,name,passw):
         driver = self.driver
+
         driver.find_element_by_id('login-Button').click()
         driver.find_element_by_id('username').clear()
         driver.find_element_by_id('username').send_keys(name)
@@ -124,7 +208,6 @@ class Action(object):
         return 'login successfull'
 
     def login_redirect(self, name, passw):
-
         driver = self.driver
         base_url = self.url + "/tr/login"
         driver.find_element_by_id('login-Button').click()
@@ -134,7 +217,6 @@ class Action(object):
         driver.find_element_by_id('password').send_keys(passw)
         driver.find_element_by_id('loginBtnSubmit').click()
         current_url = driver.current_url
-
         user_id = driver.find_element_by_class_name('userId').text
         print  user_id
         return current_url, base_url
@@ -182,6 +264,7 @@ class Action(object):
         forgot_password = driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/div[3]/div/div[2]/form/div[4]/div[1]/a')
         forgot_password.click()
         value = forgot_password.text
+        time.sleep(5)
         return value
     def soccer_button(self):
         driver =self.driver
@@ -203,9 +286,7 @@ class Action(object):
         driver.find_element_by_xpath(base_xpath).click()
         name = driver.find_element_by_xpath(base_xpath).text
         print name,'is ok...'
-    def show_name(self,name):
-        '''shows name of test'''
-        print name
+
 
     def horseracing_button(self):
         '''click on button '''
@@ -232,63 +313,12 @@ class Action(object):
         self.basquet_button()
         self.soccer_button()
 
-
-
-
-
-
-        # for i in driver.find_elements_by_class_name("active"):
-        #     print i.text
-        # base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li/a/'
-        # number_of_element = len(base_xpath)
-        # print number_of_element
-
-        # for i in driver.find_elements_by_xpath(base_xpath):
-        #     items_name = i.text
-        #     print unicode(items_name)
-
-            # driver.find_element_by_link_text(items_name).click()
-
-
-
-
-
-
-
-            # new_xpath = base_xpath + '[' + str(i) + ']' + '/a'
-            # driver.find_element_by_xpath(new_xpath).click()
-            # element_name = driver.find_element_by_xpath(new_xpath)
-            # print(element_name.text)
-            # i += 1
-            # return num_of_element - 1
-
-        # i = 1
-        # while i < num_of_element:
-        #     new_xpath = base_xpath + '[' + str(i) + ']' + '/a'
-        #     driver.find_element_by_xpath(new_xpath).click()
-        #     element_name = driver.find_element_by_xpath(new_xpath)
-        #     print(element_name.text)
-        #     i += 1
-
-    def virtual_sport_clickk(self):
-        driver = self.driver
-        self.enter_to_virtual_sport()
-        footbollXPATH = '//*[@id="bodyScope"]/div[1]/div/ul/li[1]/a/span'
-        driver.find_element_by_xpath(footbollXPATH).click()
-        basquetlXPATH = '//*[@id="bodyScope"]/div[1]/div/ul/li[2]/a/span'
-        driver.find_element_by_xpath(basquetlXPATH).click()
-        greyhoundsXPATH = '//*[@id="bodyScope"]/div[1]/div/ul/li[3]/a/span'
-        driver.find_element_by_xpath(greyhoundsXPATH).click()
-        horseracingXPATH = '//*[@id="bodyScope"]/div[1]/div/ul/li[4]/a/span'
-        driver.find_element_by_xpath(horseracingXPATH).click()
-        horseracingXPATH = '//*[@id="bodyScope"]/div[1]/div/ul/li[5]/a/span'
-        driver.find_element_by_xpath(horseracingXPATH).click()
-
     def open_result_in_browser(self, filename = "nosetests.html"):
         '''opens results in Chrome'''
         pass
 
         # webbrowser.open(filename)
+
 
     def switch_frame(self):
         driver = self.driver
@@ -296,7 +326,7 @@ class Action(object):
         driver.switch_to.frame(my_frame)
 
     def close_driver(self):
-        self.driver.close()
+        self.driver.quit()
     def enter_registered_users(self,user_name,user_login):
         self.login(user_name,user_login)
         self.close_driver()
@@ -305,14 +335,37 @@ class Action(object):
     def if_logo_are_exists(self):
         self.logo_url()
         self.logo_exist()
-        # self.open_svg_in_browser()
+
 
     def multy_bet(self, value=2):
-        pass
+        '''place a multi bet'''
+        driver = self.driver
+        self.driver.set_window_size(1800, 1800)
+        self.login(NAME, PASSW)
+        my_frame = driver.find_element_by_id('sport_iframe_1')
+        driver.switch_to.frame(my_frame)
+        row = driver.find_elements_by_class_name('leftMenuIcon')
+        row[0].click()
+
+        driver.find_element_by_xpath('//*[@id="mCSB_8_container"]/div[1]/div[2]/div[2]/a[1]/div[2]').click()
+        driver.find_element_by_xpath('//*[@id="mCSB_8_container"]/div[2]/div[2]/div[2]/a[1]/div[1]').click()
+
+        driver.switch_to.default_content()
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        driver.switch_to.frame(my_frame)
+        time.sleep(1)
+        driver.find_element_by_id("betAmountInput").clear()
+        driver.find_element_by_id("betAmountInput").send_keys(value)
+
+        driver.find_element_by_class_name('btn_bet').click()
+        congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
+        if len(driver.find_element_by_css_selector("div.congratText").text) > 1:
+            print (driver.find_element_by_css_selector("div.congratText").text)
 
     def simple_bet(self,value = 2):
         '''place a bet'''
         driver = self.driver
+        self.driver.set_window_size(1800, 1800)
         self.login(NAME,PASSW)
         my_frame = driver.find_element_by_id('sport_iframe_1')
         driver.switch_to.frame(my_frame)
@@ -320,6 +373,7 @@ class Action(object):
         row[0].click()
         class_name = "prematch_stake_odd_factor"
         driver.find_element_by_class_name(class_name).click()
+
         # driver.find_element_by_id("betAmountInput").send_keys(value)
         driver.switch_to.default_content()
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -341,33 +395,26 @@ class Action(object):
     def user_menu_click(self,numbers_menu_elements=8):
         i=1
         driver = self.driver
-
-        time.sleep(2)
-
-
+        time.sleep(3)
         while i< numbers_menu_elements:
-
             driver.find_element_by_class_name('btn-usermenu').click()
             myXPATH = '//*[@id="myAccBtn"]/ul/li[' + str(i) + ']'
+            time.sleep(2)
             buttons_name = driver.find_element_by_xpath(myXPATH).text
             driver.find_element_by_xpath(myXPATH).click()
-
             i += 1
+
 
             print buttons_name+" was clicked...\n"
 
-
-
-        # driver.find_element_by_class_name('btn-usermenu').click()
-        # time.sleep(3)
-        # driver.find_element_by_xpath('//*[@id="myAccBtn"]/ul/li[1]').click()
-        # time.sleep(3)
-        # driver.find_element_by_class_name('btn-usermenu').click()
-        # driver.find_element_by_xpath('//*[@id="myAccBtn"]/ul/li[2]').click()
-
 if __name__ == "__main__":
     test = Action()
-    test.my_account()
+    # test.multy_bet()
+    # test.simple_bet()
+    test.registration()
+
+
+    # test.my_account()
     # test.login(NAME,PASSW)
     # test.open_svg_in_browser()
     # test.forgot_password()
