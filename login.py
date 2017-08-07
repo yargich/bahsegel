@@ -10,19 +10,11 @@ class Bahsegel(unittest.TestCase):
         print 'Testing now...'
 
 
-    def pre_condition(self):
-        for i in os.listdir('./'):
-            Suff = ['.png','.svg']
-            for item in Suff:
-                if i.endswith(item):
-                    os.remove(i)
-
-
-
 
     def test_04(self):
         '''check url on login page'''
         test = Action()
+
 
         link_to_login = test.enter_to_page()
         self.assertEqual(link_to_login[0], link_to_login[1])
