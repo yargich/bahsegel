@@ -11,20 +11,25 @@ class Bahsegel(unittest.TestCase):
 
 
 
-    def test_04(self):
+    def test_url_login_page(self):
         '''check url on login page'''
         test = Action()
-
-
         link_to_login = test.enter_to_page()
         self.assertEqual(link_to_login[0], link_to_login[1])
         test.close_driver()
 
-    def test_06(self):
+    def test_successfully_login(self):
         '''successfully login'''
         test = Action()
-
         test.login(NAME,PASSW)
+        test.close_driver()
+
+    def test_forgot_password(self):
+        '''checks forgot_password button value'''
+        test=Action()
+
+        current_value = test.forgot_password()
+        self.assertEqual( u"Şifremi Unuttum?", current_value)
         test.close_driver()
 
 
