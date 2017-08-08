@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import requests, time
+import imaplib, email
 import webbrowser,os,sys, random
 from selenium import webdriver
 # from selenium.webdriver.common.keys import Keys
@@ -8,7 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
 
-BASEURL = 'https://tst.bahsegel.info'
+BASEURL = 'https://stg.bahsegel.info'
 
 NAME = "Bahsegel_26"
 PASSW = "qwerty26"
@@ -21,9 +22,10 @@ class Email():
     def enter_value(self,value):
         self.driver.find_element_by_xpath('//*[@id="inboxfield"]').send_keys(value)
         self.driver.find_element_by_xpath('/html/body/section[1]/div/div[3]/div[2]/div[2]/div[1]/span/button').click()
-        time.sleep(10)
+        # time.sleep(2)
 
-
+    def check_email(self):
+        self.driver.find_element_by_xpath('//*[@id="row_1502123813-100059284591-qwerty"]/div/div[3]')
 class Action():
     def __init__(self):
         self.url = BASEURL
@@ -31,7 +33,7 @@ class Action():
         self.driver.set_window_size(1800, 1800)
         self.driver.get(self.url)
         self.driver.implicitly_wait(10)
-        self.personal_suffix = random.randint(0,123999)
+
 
     def get_favicon(self):
         favicon_url= self.url+'/favicon.png'
@@ -88,8 +90,7 @@ class Action():
     def signup_button(self):
         driver = self.driver
         driver.find_elements_by_class_name('header-login')[0].click()
-        # for i in driver.find_elements_by_class_name('header-login'):
-        #     print i.click()
+
 
 
     def input(self,id,value):
@@ -101,25 +102,24 @@ class Action():
         select  = Select(self.driver.find_element_by_id(id))
         select.select_by_value(value)
 
-    def generate_int(self):
-        return self.personal_suffix
 
-    def generate_NewUserName(self,name):
-        return name
-    def go_to_mail(self):
-        new_driver = self.driver.get('https://www.mailinator.com/')
-        return new_driver.find_element_by_xpath('//*[@id="inboxfield"]').send
+
+
 
     def registration(self):
         driver = self.driver
         self.signup_button()
-        NewName =  'bahsegel'+str(self.generate_int())
-        email_provider = 'mailinator.com'
-        mail = NewName + '@' + email_provider
+        users_data = UsersDetails().generate_users_data()
+        NewName = users_data[0]
+        mail =   users_data[1]
 
-        self.input('gamingtec_register_username',NewName)
-        self.input('gamingtec_register_password', 'qazwsx123')
-        self.input('gamingtec_register_repeatPassword', 'qazwsx123')
+        passw =UsersDetails().passw
+        postal_code = UsersDetails().postal_code
+
+
+        self.input('gamingtec_register_username', NewName)
+        self.input('gamingtec_register_password', passw)
+        self.input('gamingtec_register_repeatPassword', passw)
 
         self.input('gamingtec_register_email', mail)
         self.input('gamingtec_register_repeatEmail',mail)
@@ -133,7 +133,7 @@ class Action():
 
 
         select_currency = Select(self.driver.find_element_by_id('currencySelect'))
-        select_currency.select_by_index(2)
+        select_currency.select_by_index(1)
 
 
         self.input('gamingtec_register_firstName','Omar')
@@ -153,10 +153,10 @@ class Action():
         select_birth_year.select_by_value('1970')
 
         self.input('gamingtec_register_address','Harbiye Mahallesi, Cumhuriyet  50')
-        self.input('gamingtec_register_postalCode', '34367')
+        self.input('gamingtec_register_postalCode', postal_code)
         self.input('gamingtec_register_city','Istanbul')
         select_country = Select(self.driver.find_element_by_id('gamingtec_register_country'))
-        select_country.select_by_value('TN')
+
         select_country.select_by_value('TR')
         self.input('gamingtec_register_mobilePhone', '902123156000')
 
@@ -406,7 +406,24 @@ class Action():
 
 
             print buttons_name+" was clicked...\n"
+class UsersDetails:
+    def __init__(self):
+        self.personal_suffix = str(random.randint(0,99))
+        self.passw = 'Qazwsx11'
+        self.postal_code =self.generate_postalcode()
+    def generate_users_data(self):
+        NewUserName = 'tst711' + str(self.personal_suffix)
+        email = NewUserName + '@' + 'mailinator.com'
+        return NewUserName,email
 
+    def generate_postalcode(self):
+        index_1 = str(random.randint(1,9))
+        index_2 = str(random.randint(1, 9))
+        index_3 = str(random.randint(1, 9))
+        index_4 = str(random.randint(1, 9))
+        index_5= str(random.randint(1, 9))
+        new_number = index_1+index_2+index_3+index_4+index_5
+        return  new_number
 if __name__ == "__main__":
     test = Action()
     # test.multy_bet()

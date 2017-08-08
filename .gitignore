@@ -11,3 +11,5 @@ gt_env
 geckodriver.log
 
 favicon.png
+nosetests.html
+

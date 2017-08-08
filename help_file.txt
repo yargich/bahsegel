@@ -162,8 +162,6 @@ Bettilt é o local onde poderas jogar casino online ou apostas desportivas
    "playHistoryTime": "All"
 
 
-
-
 "@stg.Desktop.casibon": {
    "domain": "https://stg.casibon.com",
    "login": "testuser1",
@@ -269,3 +267,13 @@ Some description
    "endBettingPeriod": "2017-06-15"
  }
 }
+
+whole test scenario:
+registration
+login
+deposit
+place bets
+play slots/casinos
+check my account pages
+withdrawal
+logout

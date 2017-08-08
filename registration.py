@@ -11,25 +11,10 @@ class BahsegelRegistration(unittest.TestCase):
         print 'Testing now...'
 
 
-    def test_10(self):
-        '''Elements of virtual sport menu with login'''
+    def test_registration(self):
+        '''User creates a new account'''
         test = Action()
-
-        test.login(NAME, PASSW)
-
-        time.sleep(3)
-        test.virtual_sport_click()
-        test.close_driver()
-
-    def test_12(self):
-        '''Checks elements of user menu'''
-        test = Action()
-        test.my_account()
-        test.close_driver()
-
-
-
-
+        test.registration()
 
         def tearDown(self):
             pass

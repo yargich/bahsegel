@@ -9,7 +9,6 @@ echo -e '\n#### Create Virtual Environment ####\n'
 
 #VIRTUAL_ENV_NAME='˜/gt_env'
 #virtualenv -p /usr/bin/python2.7 --no-site-packages $VIRTUAL_ENV_NAME
-#
 
 
 
@@ -28,7 +27,7 @@ echo -e '#### Run tests ####\n'
 
 #python start.py
 
-nosetests start_bahsegel.py --with-html
+nosetests -v start_bahsegel.py --with-html
 #python -m webbrowser nosetests.html
 open -a "Google Chrome" nosetests.html
 echo ### deactivate virtual environment ###

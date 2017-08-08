@@ -7,3 +7,14 @@ source gt_env/bin/activate
 python start_bahsegel.py
 Or run script:
 ./start_tests.sh
+
+
+
+registration
+login
+deposit
+place bets
+play slots/casinos
+my account pages
+withdrawal  
+logout
