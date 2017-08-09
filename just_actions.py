@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import requests, time
-import imaplib, email
+
 import webbrowser,os,sys, random
 from selenium import webdriver
-# from selenium.webdriver.common.keys import Keys
+
 
 from selenium.webdriver.support.ui import Select
 
@@ -23,9 +23,16 @@ class Email():
         self.driver.find_element_by_xpath('//*[@id="inboxfield"]').send_keys(value)
         self.driver.find_element_by_xpath('/html/body/section[1]/div/div[3]/div[2]/div[2]/div[1]/span/button').click()
         # time.sleep(2)
+        # self.driver.get('https://www.mailinator.com/v2/inbox.jsp?zone=public&query='+value)
+        self.driver.find_element_by_class_name('all_message-min_text').click()
+        time.sleep(3)
+        self.driver.switch_to.active_element()
+        self.driver.find_element_by_xpath("//img[contains(@src,'https://i.hizliresim.com/pWX32z.png')]").click()
+        print 'OK'
 
-    def check_email(self):
-        self.driver.find_element_by_xpath('//*[@id="row_1502123813-100059284591-qwerty"]/div/div[3]')
+    # def check_email(self):
+    #     self.driver.find_element_by_xpath('//*[@id="row_1502123813-100059284591-qwerty"]/div/div[3]')
+
 class Action():
     def __init__(self):
         self.url = BASEURL
@@ -102,10 +109,6 @@ class Action():
         select  = Select(self.driver.find_element_by_id(id))
         select.select_by_value(value)
 
-
-
-
-
     def registration(self):
         driver = self.driver
         self.signup_button()
@@ -168,9 +171,9 @@ class Action():
 
         self.driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/div[3]/div[1]/form/button').click()
 
-
-        go_to_mail = Email()
-        go_to_mail.enter_value(NewName)
+        print self.driver.find_element_by_class_name('registration').text
+        # go_to_mail = Email()
+        # go_to_mail.enter_value(NewName)
 
 
 
@@ -264,8 +267,10 @@ class Action():
         forgot_password = driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/div[3]/div/div[2]/form/div[4]/div[1]/a')
         forgot_password.click()
         value = forgot_password.text
-        time.sleep(5)
-        return value
+        time.sleep(2)
+        return value, 'is ok...'
+
+
     def soccer_button(self):
         driver =self.driver
         base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[1]'
@@ -337,10 +342,10 @@ class Action():
         self.logo_exist()
 
 
-    def multy_bet(self, value=2):
+    def multi_bet(self, value=2):
         '''place a multi bet'''
         driver = self.driver
-        self.driver.set_window_size(1800, 1800)
+        # self.driver.set_window_size(1800, 1800)
         self.login(NAME, PASSW)
         my_frame = driver.find_element_by_id('sport_iframe_1')
         driver.switch_to.frame(my_frame)
@@ -365,7 +370,7 @@ class Action():
     def simple_bet(self,value = 2):
         '''place a bet'''
         driver = self.driver
-        self.driver.set_window_size(1800, 1800)
+        # self.driver.set_window_size(1800, 1800)
         self.login(NAME,PASSW)
         my_frame = driver.find_element_by_id('sport_iframe_1')
         driver.switch_to.frame(my_frame)
@@ -374,7 +379,6 @@ class Action():
         class_name = "prematch_stake_odd_factor"
         driver.find_element_by_class_name(class_name).click()
 
-        # driver.find_element_by_id("betAmountInput").send_keys(value)
         driver.switch_to.default_content()
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         driver.switch_to.frame(my_frame)
@@ -392,6 +396,53 @@ class Action():
         self.user_menu_click()
 
 
+
+    def click_users_menu_element(self,i=1):
+        '''Login 1, Personal information 2, Account verification 3, Deposit 4, Withdraw 5 , Play history 6, Payment history 7, My bonuses 8 '''
+        driver = self.driver
+        time.sleep(1)
+        driver.find_element_by_class_name('btn-usermenu').click()
+        myXPATH = '//*[@id="myAccBtn"]/ul/li[' + str(i) + ']'
+        time.sleep(1)
+
+        buttons_name = driver.find_element_by_xpath(myXPATH).text
+        driver.find_element_by_xpath(myXPATH).click()
+        print buttons_name
+        return buttons_name
+    def select_card(self):
+        driver = self.driver
+        driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/ul[2]/li[1]/div/a').click()
+
+        driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/form/div/ul/li[1]').click()
+        driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/form/div/button/span').click()
+        driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/div[2]/ul/li/a/span').click()
+        driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/form/div/div[2]/button/span').click()
+        card = CardDetails()
+        number = card.number
+        cvv = card.cvv
+        exp_data_month =card.exp.split('/')[0]
+        exp_data_year = card.exp.split('/')[1]
+        driver.find_element_by_id("gamingtec_deposit_creditcard_cardNumber").send_keys(number)
+        select_card_details_month = Select(driver.find_element_by_id('gamingtec_deposit_creditcard_expirationMonth'))
+        select_card_details_month.select_by_value(exp_data_month)
+
+        select_card_details_year = Select(driver.find_element_by_id('gamingtec_deposit_creditcard_expirationYear'))
+        select_card_details_year.select_by_value(exp_data_year)
+
+        driver.find_element_by_id('gamingtec_deposit_creditcard_cvv').click()
+        driver.find_element_by_id('gamingtec_deposit_creditcard_cvv').send_keys(cvv)
+
+        driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/form/div/div[2]/button/span').click()
+        message = driver.find_element_by_xpath('//*[@id="inPageMsgBox"]/p/span').text
+
+        return message
+
+
+    def deposit(self):
+        self.login(NAME,PASSW)
+        self.click_users_menu_element(3)
+        self.select_card()
+
     def user_menu_click(self,numbers_menu_elements=8):
         i=1
         driver = self.driver
@@ -403,16 +454,24 @@ class Action():
             buttons_name = driver.find_element_by_xpath(myXPATH).text
             driver.find_element_by_xpath(myXPATH).click()
             i += 1
-
-
             print buttons_name+" was clicked...\n"
+
+class CardDetails():
+    def __init__(self):
+        self.number = '4716 0277 1826 2637'
+        self.typeCard = 'Visa '
+        self.cvv = '641'
+        self.exp = '08/2018'
+        self.name= 'CODY GUSTMAN'
+
+
 class UsersDetails:
     def __init__(self):
         self.personal_suffix = str(random.randint(0,99))
         self.passw = 'Qazwsx11'
         self.postal_code =self.generate_postalcode()
     def generate_users_data(self):
-        NewUserName = 'tst711' + str(self.personal_suffix)
+        NewUserName = 'tst711_' + str(self.personal_suffix)
         email = NewUserName + '@' + 'mailinator.com'
         return NewUserName,email
 
@@ -424,11 +483,16 @@ class UsersDetails:
         index_5= str(random.randint(1, 9))
         new_number = index_1+index_2+index_3+index_4+index_5
         return  new_number
+
+
 if __name__ == "__main__":
     test = Action()
+    test.deposit()
     # test.multy_bet()
     # test.simple_bet()
-    test.registration()
+    # test.registration()
+
+
 
 
     # test.my_account()
