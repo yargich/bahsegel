@@ -7,16 +7,15 @@ from selenium import webdriver
 
 
 from selenium.webdriver.support.ui import Select
+from conf import *
 
+BASEURL = BahsegelTST
+NAME = BahsegelLogin
+PASSW = BahsegelPassw
 
-BASEURL = 'https://stg.bahsegel.info'
-
-NAME = "Bahsegel_26"
-PASSW = "qwerty26"
 
 class Email():
     def __init__(self):
-
         self.driver = webdriver.Chrome()
         self.driver.get('https://mailinator.com/')
     def enter_value(self,value):
@@ -36,10 +35,11 @@ class Email():
 class Action():
     def __init__(self):
         self.url = BASEURL
-        self.driver = webdriver.Chrome()
-        self.driver.set_window_size(1800, 1800)
+        self.driver = webdriver.Firefox()
+
         self.driver.get(self.url)
         self.driver.implicitly_wait(10)
+        self.login(NAME, PASSW)
 
 
     def get_favicon(self):
@@ -198,6 +198,7 @@ class Action():
         return current_url
 
     def login(self,name,passw):
+        '''Login to site with creds'''
         driver = self.driver
 
         driver.find_element_by_id('login-Button').click()
@@ -205,12 +206,12 @@ class Action():
         driver.find_element_by_id('username').send_keys(name)
         driver.find_element_by_id('password').clear()
         driver.find_element_by_id('password').send_keys(passw)
-        subbutton_xpath = '//*[@id="loginBtnSubmit"]'
-        driver.find_element_by_xpath(subbutton_xpath).click()
-        print "\nLogin with users name {0} and password {1} was successfull...\n".format(NAME,PASSW)
-        return 'login successfull'
+        driver.find_element_by_id('loginBtnSubmit').click()
+        # print "\nLogin with users name {0} and password {1} was successfull...\n".format(NAME,PASSW)
+        # return 'login successfull'
 
     def login_redirect(self, name, passw):
+
         driver = self.driver
         base_url = self.url + "/tr/login"
         driver.find_element_by_id('login-Button').click()
@@ -247,8 +248,9 @@ class Action():
             return 'Logo exists'
 
 
-    def check_top_menu(self):
+    def check_top_menuu(self,name,passw):
         driver = self.driver
+        self.login(name,passw)
         base_xpath = '//*[@id="bodyScope"]/header[1]/nav/div/ul/li'
         top_menu = driver.find_elements_by_xpath(base_xpath)
         num_of_element = len(top_menu)
@@ -260,6 +262,14 @@ class Action():
             print(element_name.text)
             i += 1
         return num_of_element - 1
+
+
+    def check_top_menu(self):
+        driver = self.driver
+
+        menu_titles = [u'SPOR BAHİSLERİ',u'CANLI BAHİS',u'CASİNO',u'CANLI CASİNO',u'Sanal Sporlar',u'CANLI OYUNLAR',u"Bonus"]
+        for item in menu_titles:
+            driver.find_element_by_link_text(item).click()
 
     def forgot_password(self):
         driver = self.driver
@@ -464,7 +474,6 @@ class CardDetails():
         self.exp = '08/2018'
         self.name= 'CODY GUSTMAN'
 
-
 class UsersDetails:
     def __init__(self):
         self.personal_suffix = str(random.randint(0,99))
@@ -487,7 +496,11 @@ class UsersDetails:
 
 if __name__ == "__main__":
     test = Action()
-    test.deposit()
+    # test.login(NAME, PASSW)
+    test.check_top_menu()
+
+
+    # test.deposit()
     # test.multy_bet()
     # test.simple_bet()
     # test.registration()
@@ -496,7 +509,7 @@ if __name__ == "__main__":
 
 
     # test.my_account()
-    # test.login(NAME,PASSW)
+
     # test.open_svg_in_browser()
     # test.forgot_password()
     # test.precondition()
@@ -509,7 +522,7 @@ if __name__ == "__main__":
     # test.click_registration()
     # test.enter_registered_users(NAME,PASSW)
     # test.virtual_sport_click()
-    # test.login("Bahsegel_26","qwerty26")
+
     # test.enter_to_virtual_sport()
     # test.virtual_sport_click()
 
