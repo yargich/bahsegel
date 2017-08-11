@@ -13,7 +13,6 @@ BASEURL = BahsegelTST
 NAME = BahsegelLogin
 PASSW = BahsegelPassw
 
-
 class Email():
     def __init__(self):
         self.driver = webdriver.Chrome()
@@ -36,10 +35,11 @@ class Action():
     def __init__(self):
         self.url = BASEURL
         self.driver = webdriver.Firefox()
-
         self.driver.get(self.url)
         self.driver.implicitly_wait(10)
-        self.login(NAME, PASSW)
+
+
+
 
 
     def get_favicon(self):
@@ -207,6 +207,8 @@ class Action():
         driver.find_element_by_id('password').clear()
         driver.find_element_by_id('password').send_keys(passw)
         driver.find_element_by_id('loginBtnSubmit').click()
+        time.sleep(4)
+        return driver.current_url
         # print "\nLogin with users name {0} and password {1} was successfull...\n".format(NAME,PASSW)
         # return 'login successfull'
 
@@ -227,11 +229,11 @@ class Action():
 
     def enter_to_virtual_sport(self):
         driver = self.driver
-        virtual_sports_xpath = './/*[@id="bodyScope"]/header[1]/nav/div/ul/li[5]/a'
-        virtual_sport_button = driver.find_element_by_xpath(virtual_sports_xpath)
-        virtual_sport_button.click()
-        # name_of_button = virtual_sport_button.text
-        # print name_of_button
+        button_title = u'Sanal Sporlar'
+
+        driver.find_element_by_link_text(button_title).click()
+
+
 
 
     def logo_url(self):
@@ -248,25 +250,11 @@ class Action():
             return 'Logo exists'
 
 
-    def check_top_menuu(self,name,passw):
-        driver = self.driver
-        self.login(name,passw)
-        base_xpath = '//*[@id="bodyScope"]/header[1]/nav/div/ul/li'
-        top_menu = driver.find_elements_by_xpath(base_xpath)
-        num_of_element = len(top_menu)
-        i = 1
-        while i < num_of_element:
-            new_xpath = base_xpath + '[' + str(i) + ']' + '/a'
-            driver.find_element_by_xpath(new_xpath).click()
-            element_name = driver.find_element_by_xpath(new_xpath)
-            print(element_name.text)
-            i += 1
-        return num_of_element - 1
+
 
 
     def check_top_menu(self):
         driver = self.driver
-
         menu_titles = [u'SPOR BAHİSLERİ',u'CANLI BAHİS',u'CASİNO',u'CANLI CASİNO',u'Sanal Sporlar',u'CANLI OYUNLAR',u"Bonus"]
         for item in menu_titles:
             driver.find_element_by_link_text(item).click()
@@ -280,53 +268,30 @@ class Action():
         time.sleep(2)
         return value, 'is ok...'
 
-
-    def soccer_button(self):
-        driver =self.driver
-        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[1]'
-        driver.find_element_by_xpath(base_xpath).click()
-        name = driver.find_element_by_xpath(base_xpath).text
-        print name,'is ok...'
-
-    def basquet_button(self):
+    def virtual_sport_button(self,class_name):
         driver = self.driver
-        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[2]'
-        driver.find_element_by_xpath(base_xpath).click()
-        name = driver.find_element_by_xpath(base_xpath).text
-        print name,'is ok...'
 
-    def greyhounds_button(self):
-        driver = self.driver
-        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[3]'
-        driver.find_element_by_xpath(base_xpath).click()
-        name = driver.find_element_by_xpath(base_xpath).text
-        print name,'is ok...'
+        name = driver.find_element_by_class_name(class_name).text
+        driver.find_element_by_class_name(class_name).click()
 
 
-    def horseracing_button(self):
-        '''click on button '''
-        driver = self.driver
-        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[4]'
-        driver.find_element_by_xpath(base_xpath).click()
-        name = driver.find_element_by_xpath(base_xpath).text
-        print name,'is ok...'
+        print name, 'is ok...'
 
-    def tennis_button(self):
-        driver = self.driver
-        base_xpath = '//*[@id="bodyScope"]/div[1]/div/ul/li[5]'
-        driver.find_element_by_xpath(base_xpath).click()
-        name = driver.find_element_by_xpath(base_xpath).text
-        print name,'is ok...'
+    def check_load_of_pages(self):
+        time.sleep(10)
 
 
     def virtual_sport_click(self):
-        driver = self.driver
         self.enter_to_virtual_sport()
-        self.tennis_button()
-        self.horseracing_button()
-        self.greyhounds_button()
-        self.basquet_button()
-        self.soccer_button()
+        titles = ['soccer','basketball','greyhounds','horseracing','tennis']
+        for title in titles:
+            self.virtual_sport_button(title)
+            #insert checking of loading page'''
+            self.check_load_of_pages()
+
+
+
+
 
     def open_result_in_browser(self, filename = "nosetests.html"):
         '''opens results in Chrome'''
@@ -351,43 +316,48 @@ class Action():
         self.logo_url()
         self.logo_exist()
 
-
-    def multi_bet(self, value=2):
-        '''place a multi bet'''
+    def replace_bet(self, value=2,multi_bet=False):
+        self.driver.set_window_size(1800, 1800)
+        # self.driver.maximize_window()
+        button_name = u'SPOR BAHİSLERİ'
+        time.sleep(3)
+        self.driver.find_element_by_link_text(button_name).click()
+        '''place a bet'''
         driver = self.driver
-        # self.driver.set_window_size(1800, 1800)
-        self.login(NAME, PASSW)
+
+
         my_frame = driver.find_element_by_id('sport_iframe_1')
         driver.switch_to.frame(my_frame)
         row = driver.find_elements_by_class_name('leftMenuIcon')
-        row[0].click()
+        if multi_bet is True:
+            row[0].click()
+        else:
+            row[0].click()
+            time.sleep(2)
+            row[0].click()
 
-        driver.find_element_by_xpath('//*[@id="mCSB_8_container"]/div[1]/div[2]/div[2]/a[1]/div[2]').click()
-        driver.find_element_by_xpath('//*[@id="mCSB_8_container"]/div[2]/div[2]/div[2]/a[1]/div[1]').click()
+        driver.find_element_by_class_name("prematch_stake_odd_factor").click()
 
         driver.switch_to.default_content()
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         driver.switch_to.frame(my_frame)
-        time.sleep(1)
         driver.find_element_by_id("betAmountInput").clear()
         driver.find_element_by_id("betAmountInput").send_keys(value)
+        # driver.find_element_by_class_name('btn_bet').click()
+        driver.find_element_by_link_text(u'GİRİŞ YAP').click()
 
-        driver.find_element_by_class_name('btn_bet').click()
-        congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
-        if len(driver.find_element_by_css_selector("div.congratText").text) > 1:
-            print (driver.find_element_by_css_selector("div.congratText").text)
 
     def simple_bet(self,value = 2):
         '''place a bet'''
         driver = self.driver
-        # self.driver.set_window_size(1800, 1800)
-        self.login(NAME,PASSW)
+        self.driver.set_window_size(1800, 1800)
+
         my_frame = driver.find_element_by_id('sport_iframe_1')
         driver.switch_to.frame(my_frame)
         row = driver.find_elements_by_class_name('leftMenuIcon')
         row[0].click()
-        class_name = "prematch_stake_odd_factor"
-        driver.find_element_by_class_name(class_name).click()
+
+        driver.find_element_by_class_name("prematch_stake_odd_factor").click()
 
         driver.switch_to.default_content()
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -395,9 +365,11 @@ class Action():
         driver.find_element_by_id("betAmountInput").clear()
         driver.find_element_by_id("betAmountInput").send_keys(value)
         driver.find_element_by_class_name('btn_bet').click()
-        congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
-        if len(driver.find_element_by_css_selector("div.congratText").text)>1:
-            print (driver.find_element_by_css_selector("div.congratText").text)
+        # congrat_etalon_text = u"Bahis oynanmıştır.\nİyi Şanslar!"
+
+        # if len(driver.find_element_by_css_selector("div.congratText").text)>1:
+        #     print (driver.find_element_by_css_selector("div.congratText").text)
+        # return congrat_etalon_text
 
     def my_account(self):
         driver = self.driver
@@ -419,10 +391,10 @@ class Action():
         driver.find_element_by_xpath(myXPATH).click()
         print buttons_name
         return buttons_name
+
     def select_card(self):
         driver = self.driver
         driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/ul[2]/li[1]/div/a').click()
-
         driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/form/div/ul/li[1]').click()
         driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/form/div/button/span').click()
         driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/section/div[2]/ul/li/a/span').click()
@@ -449,7 +421,7 @@ class Action():
 
 
     def deposit(self):
-        self.login(NAME,PASSW)
+
         self.click_users_menu_element(3)
         self.select_card()
 
@@ -496,13 +468,17 @@ class UsersDetails:
 
 if __name__ == "__main__":
     test = Action()
-    # test.login(NAME, PASSW)
-    test.check_top_menu()
+    test.login(NAME, PASSW)
+    # test.check_top_menu()
+    # test.virtual_sport_click()
+    #
+    # test.replace_bet()
+    # test.replace_bet(multi_bet=True)
 
 
-    # test.deposit()
+    test.deposit()
     # test.multy_bet()
-    # test.simple_bet()
+    #
     # test.registration()
 
 
