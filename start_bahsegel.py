@@ -2,13 +2,11 @@
 # -*- coding: utf-8 -*-
 
 from just_actions import *
-
 import unittest,time,sys
 
 class Bahsegel(unittest.TestCase):
     def setUp(self):
         print 'Testing now...'
-
 
     def pre_condition(self):
         for i in os.listdir('./'):
@@ -95,17 +93,19 @@ class Bahsegel(unittest.TestCase):
         time.sleep(3)
         test.virtual_sport_click()
         test.close_driver()
-    def test_multy_bet(self):
-        '''Place multy bet'''
-        test = Action()
-        test.multy_bet(2)
-        test.close_driver()
+
+    #     test.close_driver()
 
     def test_simple_bet(self):
         '''Place simple bet'''
         test = Action()
         test.simple_bet()
         test.close_driver()
+
+    def test_multy_bet(self):
+        '''Place multy bet'''
+        test = Action()
+        test.multy_bet()
 
     def test_elements_of_user_menu(self):
         '''Checks elements of user menu'''
