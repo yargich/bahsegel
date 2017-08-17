@@ -9,7 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from conf import *
 
-BASEURL = BahsegelTST
+BASEURL =  "https://beta5:gamma8@tst.bahsegel.info"
 NAME = BahsegelLogin
 PASSW = BahsegelPassw
 
@@ -164,16 +164,18 @@ class Action():
         self.input('gamingtec_register_mobilePhone', '902123156000')
 
         time.sleep(2)
-        self.driver.find_elements_by_xpath('//*[@id="gamingtec_register_receiveEmail"]')[0].click()
+        # self.driver.find_elements_by_xpath('//*[@id="gamingtec_register_receiveEmail"]')[0].click()
+        self.driver.find_element_by_id("gamingtec_register_receiveEmail").click()
+
+        self.driver.find_element_by_id("gamingtec_register_agreeTermAndConditions").click()
 
         self.driver.find_elements_by_xpath('//*[@id="gamingtec_register_agreeTermAndConditions"]')[0].click()
 
 
-        self.driver.find_element_by_xpath('//*[@id="bodyScope"]/div[1]/div[3]/div[1]/form/button').click()
+        self.driver.find_element_by_class_name('submit-button').click()
 
-        print self.driver.find_element_by_class_name('registration').text
-        # go_to_mail = Email()
-        # go_to_mail.enter_value(NewName)
+        confirmation = Email()
+        confirmation.enter_value(NewName)
 
 
 
@@ -468,7 +470,7 @@ class UsersDetails:
 
 if __name__ == "__main__":
     test = Action()
-    test.login(NAME, PASSW)
+    # test.login(NAME, PASSW)
     # test.check_top_menu()
     # test.virtual_sport_click()
     #
@@ -476,10 +478,10 @@ if __name__ == "__main__":
     # test.replace_bet(multi_bet=True)
 
 
-    test.deposit()
+    # test.deposit()
     # test.multy_bet()
     #
-    # test.registration()
+    test.registration()
 
 
 
